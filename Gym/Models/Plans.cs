@@ -28,5 +28,7 @@ namespace Gym.Models
         [Display(Name = "Sessions")]
         public int Sessions { get; set; }
 
+        public int plane { get; set; } //prove git
+
     }
 }
