@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,10 +9,6 @@ namespace Gym.Models
     public class Diets
     {
         public string DietId { get; set; }
-       
-        [Required(ErrorMessage = "Name is required")]
-        [Display(Name = "ClientName")]
-        public string ClientName { get; set; }
 
         [Required(ErrorMessage = "Weight is required")]
         [Display(Name = "Suggested Weight")] 

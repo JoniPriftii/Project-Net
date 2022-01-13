@@ -3,8 +3,9 @@
     "",
     "\\Gym",
     "\\Gym\\Controllers",
-    "\\Gym\\Models"
+    "\\Gym\\Models",
+    "\\Gym\\Views"
   ],
-  "SelectedNode": "\\Gym\\Controllers\\DietatController.cs",
+  "SelectedNode": "\\Gym\\Models\\Diets.cs",
   "PreviewInSolutionExplorer": false
 }
