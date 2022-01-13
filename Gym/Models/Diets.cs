@@ -20,7 +20,7 @@ namespace Gym.Models
 
         public string ImageName { get; set; }
 
-        [StringLength(500, ErrorMessage = "String must not be longer than 500" MinLength = "200")]
+        [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 200)]
         public string Description { get; set; }
     }
 }
