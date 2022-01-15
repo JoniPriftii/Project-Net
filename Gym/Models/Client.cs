@@ -26,12 +26,10 @@ namespace Gym.Models
         [Required(ErrorMessage = "Do not leave phone number blank")]
         [Display(Name = "Phone Number")]
         public int Phone { get; set; }
-
+        public int? DietId { get; set; }
         public int? PlanId { get; set; }
 
-
-
-        public virtual Diet DietId { get; set; }
+        public virtual Diet Diet { get; set; }
 
         public virtual Plan Plan { get; set; }
 

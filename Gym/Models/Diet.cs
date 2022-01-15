@@ -24,6 +24,6 @@ namespace Gym.Models
         public string Description { get; set; }
 
 
-        public ICollection<Client> ClientId { get; set; }
+        public ICollection<Client> Client { get; set; }
     }
 }
