@@ -6,11 +6,10 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Clients
+    public class Client
     {
-        [Required(ErrorMessage ="Do not leave Client ID blank")]
-        [Display(Name= "ID Number")]
-        public int Id { get; set; }
+
+        public int ClientId { get; set; }
         [Required(ErrorMessage = "Do not leave name space blank")]
         [Display(Name = "First Name")]
         public string Name { get; set; }
@@ -19,7 +18,7 @@ namespace Gym.Models
         public string Surname { get; set; }
         [Required(ErrorMessage = "Enter your height")]
         [Display(Name = "Body Height")]
-        [Range(0, 210)]
+        [Range(100, 210)]
         public int Height { get; set; }
         [Required(ErrorMessage = "Enter your weight")]
         [Display(Name = "Body Weight")]
@@ -28,5 +27,14 @@ namespace Gym.Models
         [Display(Name = "Phone Number")]
         public int Phone { get; set; }
 
+        public int? PlanId { get; set; }
+
+
+
+        public virtual Diet DietId { get; set; }
+
+        public virtual Plan Plan { get; set; }
+
+        public ICollection<Products> ProductId { get; set; }
     }
 }

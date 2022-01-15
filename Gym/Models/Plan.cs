@@ -6,11 +6,10 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Plans
+    public class Plan
     {
-        [Required]
-        [Display(Name = "Id")]
-        public int Id { get; set; }
+        
+        public int PlanId { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -29,7 +28,8 @@ namespace Gym.Models
         public int Sessions { get; set; }
 
 
-        public int plane { get; set; } //prove git
+        public ICollection<Client> ClientId { get; set; }
 
+        public virtual Trainier TrainierId { get; set; }
     }
 }

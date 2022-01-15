@@ -9,7 +9,7 @@ namespace Gym.Models
     public class Trainier
     {
    
-        [Display(Name ="Id")]
+        
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Name is required")]
@@ -23,6 +23,9 @@ namespace Gym.Models
         [Display(Name ="Experience")]
         public string Experience { get; set; }
         
+        public int PlanId { get; set; }
 
+
+        public virtual Plan Plan { get; set; }
     }
 }

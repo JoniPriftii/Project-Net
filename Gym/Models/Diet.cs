@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Diets
+    public class Diet
     {
-        public string DietId { get; set; }
+        public int DietId { get; set; }
 
         [Required(ErrorMessage = "Weight is required")]
         [Display(Name = "Suggested Weight")] 
@@ -22,5 +22,8 @@ namespace Gym.Models
 
         [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 200)]
         public string Description { get; set; }
+
+
+        public ICollection<Client> ClientId { get; set; }
     }
 }
