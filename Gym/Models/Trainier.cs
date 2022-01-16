@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,8 +9,8 @@ namespace Gym.Models
 {
     public class Trainier
     {
-   
-        
+
+        [ForeignKey("Plan")]
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Name is required")]
@@ -24,7 +25,6 @@ namespace Gym.Models
         public string Experience { get; set; }
         
         public int PlanId { get; set; }
-
 
         public virtual Plan Plan { get; set; }
     }

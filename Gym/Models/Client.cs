@@ -33,6 +33,6 @@ namespace Gym.Models
 
         public virtual Plan Plan { get; set; }
 
-        public ICollection<Products> ProductId { get; set; }
+        public ICollection<Product> ProductId { get; set; }
     }
 }

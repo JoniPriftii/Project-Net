@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Products
+    public class Product
     {
         
         public int ID { get; set; }

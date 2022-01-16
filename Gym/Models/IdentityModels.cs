@@ -20,6 +20,11 @@ namespace Gym.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Diet> Diets { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Trainier> Trainiers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
