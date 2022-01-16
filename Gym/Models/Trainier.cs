@@ -24,7 +24,11 @@ namespace Gym.Models
         [Display(Name ="Experience")]
         public string Experience { get; set; }
         
+
+
+
         public int PlanId { get; set; }
+
 
         public virtual Plan Plan { get; set; }
     }
