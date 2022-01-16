@@ -3,7 +3,7 @@ namespace Gym.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class CreatingDatabase : DbMigration
     {
         public override void Up()
         {
@@ -19,6 +19,7 @@ namespace Gym.Migrations
                         Phone = c.Int(nullable: false),
                         DietId = c.Int(),
                         PlanId = c.Int(),
+                        ProductId = c.Int(),
                     })
                 .PrimaryKey(t => t.ClientId)
                 .ForeignKey("dbo.Diets", t => t.DietId)
@@ -35,6 +36,7 @@ namespace Gym.Migrations
                         Height = c.Int(nullable: false),
                         ImageName = c.String(),
                         Description = c.String(maxLength: 500),
+                        ClientId = c.Int(),
                     })
                 .PrimaryKey(t => t.DietId);
             
@@ -48,6 +50,8 @@ namespace Gym.Migrations
                         Duration = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Sessions = c.Int(nullable: false),
+                        TrainierId = c.Int(),
+                        ClientId = c.Int(),
                     })
                 .PrimaryKey(t => t.PlanId);
             
@@ -69,13 +73,13 @@ namespace Gym.Migrations
                 "dbo.Products",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        ProductId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Category = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ImageName = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ProductId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -149,13 +153,13 @@ namespace Gym.Migrations
                 "dbo.ProductClients",
                 c => new
                     {
-                        Product_ID = c.Int(nullable: false),
+                        Product_ProductId = c.Int(nullable: false),
                         Client_ClientId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Product_ID, t.Client_ClientId })
-                .ForeignKey("dbo.Products", t => t.Product_ID, cascadeDelete: true)
+                .PrimaryKey(t => new { t.Product_ProductId, t.Client_ClientId })
+                .ForeignKey("dbo.Products", t => t.Product_ProductId, cascadeDelete: true)
                 .ForeignKey("dbo.Clients", t => t.Client_ClientId, cascadeDelete: true)
-                .Index(t => t.Product_ID)
+                .Index(t => t.Product_ProductId)
                 .Index(t => t.Client_ClientId);
             
         }
@@ -167,12 +171,12 @@ namespace Gym.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.ProductClients", "Client_ClientId", "dbo.Clients");
-            DropForeignKey("dbo.ProductClients", "Product_ID", "dbo.Products");
+            DropForeignKey("dbo.ProductClients", "Product_ProductId", "dbo.Products");
             DropForeignKey("dbo.Trainiers", "Id", "dbo.Plans");
             DropForeignKey("dbo.Clients", "PlanId", "dbo.Plans");
             DropForeignKey("dbo.Clients", "DietId", "dbo.Diets");
             DropIndex("dbo.ProductClients", new[] { "Client_ClientId" });
-            DropIndex("dbo.ProductClients", new[] { "Product_ID" });
+            DropIndex("dbo.ProductClients", new[] { "Product_ProductId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");

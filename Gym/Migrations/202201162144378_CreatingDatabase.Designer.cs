@@ -7,13 +7,13 @@ namespace Gym.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FirstMigration : IMigrationMetadata
+    public sealed partial class CreatingDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreatingDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202201160840134_FirstMigration"; }
+            get { return "202201162144378_CreatingDatabase"; }
         }
         
         string IMigrationMetadata.Source

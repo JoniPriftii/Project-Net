@@ -11,7 +11,7 @@ namespace Gym.Models
     public class Product
     {
         
-        public int ID { get; set; }
+        public int ProductId { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
         [Display(Name = "Name")]
@@ -26,13 +26,7 @@ namespace Gym.Models
         public decimal Price { get; set; }
 
         [Display(Name = "ImageName")]
-        public string ImageName { get; set;}
-
-
-
-
-        public int? ClientId { get; set; }
-
+        public string ImageName { get; set; }
         public ICollection<Client> Client { get; set; }
     }
 }

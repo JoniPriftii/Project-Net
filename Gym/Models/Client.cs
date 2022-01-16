@@ -27,13 +27,9 @@ namespace Gym.Models
         [Display(Name = "Phone Number")]
         public int Phone { get; set; }
 
-
-
-
         public int? DietId { get; set; }
         public int? PlanId { get; set; }
         public int? ProductId { get; set; }
-
 
         public virtual Diet Diet { get; set; }
 
