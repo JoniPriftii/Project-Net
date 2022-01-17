@@ -13,23 +13,18 @@ namespace Gym.Models
         [ForeignKey("Plan")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Name is required")]
-        [Display(Name ="Name")]
+        [Required(ErrorMessage = "Name is required")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Surname is required")]
-        [Display(Name ="Surname")]
+        [Display(Name = "Surname")]
         public string Surname { get; set; }
 
-        [Display(Name ="Experience")]
+        [Display(Name = "Experience")]
         public string Experience { get; set; }
-        
 
 
-
-        public int PlanId { get; set; }
-
-
-        public virtual Plan Plan { get; set; }
+        public ICollection<Plan> Plan { get; set; }
     }
 }

@@ -27,14 +27,14 @@ namespace Gym.Models
         [Display(Name = "Phone Number")]
         public int Phone { get; set; }
 
-        public int? DietId { get; set; }
-        public int? PlanId { get; set; }
-        public int? ProductId { get; set; }
+        public int DietId { get; set; }
+        public int PlanId { get; set; }
 
-        public virtual Diet Diet { get; set; }
 
-        public virtual Plan Plan { get; set; }
+        public  Diet Diet { get; set; }
 
-        public ICollection<Product> Product { get; set; }
+        public  Plan Plan { get; set; }
+
+        public ICollection<ClientProduct> ClientProduct { get; set; }
     }
 }

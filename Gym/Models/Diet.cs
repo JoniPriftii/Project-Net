@@ -11,7 +11,7 @@ namespace Gym.Models
         public int DietId { get; set; }
 
         [Required(ErrorMessage = "Weight is required")]
-        [Display(Name = "Suggested Weight")] 
+        [Display(Name = "Suggested Weight")]
         public int Weight { get; set; }
 
         [Required(ErrorMessage = "Height is required")]
@@ -26,7 +26,7 @@ namespace Gym.Models
 
 
 
-        public int? ClientId { get; set; }
+
 
         public ICollection<Client> Client { get; set; }
     }

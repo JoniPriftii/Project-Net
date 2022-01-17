@@ -10,7 +10,7 @@ namespace Gym.Models
 {
     public class Product
     {
-        
+
         public int ProductId { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
@@ -27,7 +27,8 @@ namespace Gym.Models
 
         [Display(Name = "ImageName")]
         public string ImageName { get; set; }
-        public ICollection<Client> Client { get; set; }
+
+        public ICollection<ClientProduct> ClientProduct { get; set; }
     }
 }
 
