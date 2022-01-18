@@ -30,11 +30,12 @@ namespace Gym.Models
         public int DietId { get; set; }
         public int PlanId { get; set; }
 
+        public int ProductId { get; set; }
 
         public  Diet Diet { get; set; }
 
         public  Plan Plan { get; set; }
 
-        public ICollection<ClientProduct> ClientProduct { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

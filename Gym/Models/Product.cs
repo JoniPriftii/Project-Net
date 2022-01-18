@@ -28,7 +28,7 @@ namespace Gym.Models
         [Display(Name = "ImageName")]
         public string ImageName { get; set; }
 
-        public ICollection<ClientProduct> ClientProduct { get; set; }
+        public Client Client { get; set; }
     }
 }
 
