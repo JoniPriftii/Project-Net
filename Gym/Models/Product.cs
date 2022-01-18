@@ -28,7 +28,7 @@ namespace Gym.Models
         [Display(Name = "ImageName")]
         public string ImageName { get; set; }
 
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
     }
 }
 

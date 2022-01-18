@@ -27,12 +27,7 @@ namespace Gym.Models
         [Display(Name = "Sessions")]
         public int Sessions { get; set; }
 
-
-
-
-
-        public int TrainierId { get; set; }
-        public  Trainier Trainier { get; set; }
+        public  virtual Trainier Trainier { get; set; }
 
         public ICollection<Client> Client { get; set; }
     }

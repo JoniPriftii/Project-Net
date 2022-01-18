@@ -216,5 +216,5 @@ C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.CoreCompileInputs.cac
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.CopyComplete
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.pdb
-C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.CreatingDatabase.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.FirstMigration.resources
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache
