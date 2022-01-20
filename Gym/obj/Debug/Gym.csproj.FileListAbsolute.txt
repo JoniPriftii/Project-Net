@@ -216,8 +216,6 @@ C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.CoreCompileInputs.cac
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.CopyComplete
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.pdb
-C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.FirstMigration.resources
-C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache
 C:\Users\User\Desktop\abc\Project-Net\Gym\bin\Gym.dll.config
 C:\Users\User\Desktop\abc\Project-Net\Gym\bin\Gym.dll
 C:\Users\User\Desktop\abc\Project-Net\Gym\bin\Gym.pdb
@@ -327,3 +325,5 @@ C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.pdb
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.Migrations.First.resources
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.FirstMigration.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache

@@ -14,7 +14,8 @@ namespace Gym.Models
         public int ClientId { get; set; }
         [Key]
         [Column(Order = 2)]
-        public int PlanId { get; set; }
+        public int ExercisePlanId { get; set; }
+        public DateTime StartDate { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -20,12 +20,16 @@ namespace Gym.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Client> Clients { get; set; }
+        
         public DbSet<DietPlan> DietPlans { get; set; }
         public DbSet<ExercisePlan> ExercisePlans { get; set; }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Trainier> Trainiers { get; set; }
         public DbSet<ClientExercisePlan> ClientExercisePlans { get; set; }
+        public DbSet<ClientDietPlan> ClientDietPlans { get; set; }
+        public DbSet<Client> Clients { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -9,7 +9,6 @@ namespace Gym.Models
 {
     public class Trainier
     {
-
         
         public int TrainierId { get; set; }
 

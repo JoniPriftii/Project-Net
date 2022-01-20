@@ -10,12 +10,12 @@ namespace Gym.Models
     {
 
         public int ClientId { get; set; }
-        [Required(ErrorMessage = "Do not leave name space blank")]
+        [Required(ErrorMessage = "Enter your First Name")]
         [Display(Name = "First Name")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Do not leave surname space blank")]
+        [Required(ErrorMessage = "Enter your Last Name")]
         [Display(Name = "Last Name")]
-        public string Surname { get; set; }
+        public string LastName { get; set; }
         [Required(ErrorMessage = "Enter your height")]
         [Display(Name = "Body Height")]
         [Range(100, 210)]
@@ -23,18 +23,14 @@ namespace Gym.Models
         [Required(ErrorMessage = "Enter your weight")]
         [Display(Name = "Body Weight")]
         public int Weight { get; set; }
-        [Required(ErrorMessage = "Do not leave phone number blank")]
+        [Required(ErrorMessage = "Enter your phone number")]
         [Display(Name = "Phone Number")]
-        public int Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public int DietId { get; set; }
-        public int PlanId { get; set; }
-        public int ProductId { get; set; }
+        public virtual ICollection<ClientDietPlan> ClientDietPlan { get; set; }
 
         public virtual ICollection<ClientExercisePlan> ClientExercisePlan { get; set; }
 
-        public virtual ICollection<ExercisePlan> ExercisePlan { get; set; }
-
-        public ICollection<Product> Product { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

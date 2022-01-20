@@ -22,7 +22,6 @@ namespace Gym.Models
 
         [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 200)]
         public string Description { get; set; }
-
-        public ICollection<Client> Client { get; set; }
+        public virtual ICollection<ClientDietPlan> ClientDietPlans { get; set; }
     }
 }
