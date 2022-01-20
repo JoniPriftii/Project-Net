@@ -10,7 +10,7 @@ namespace Gym.Models
     public class Trainier
     {
 
-        [ForeignKey("Plan")]
+        
         public int TrainierId { get; set; }
 
         [Required(ErrorMessage = "Name is required")]

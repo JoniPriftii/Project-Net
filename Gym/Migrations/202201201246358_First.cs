@@ -3,10 +3,25 @@ namespace Gym.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class First : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.ClientExercisePlans",
+                c => new
+                    {
+                        ClientId = c.Int(nullable: false),
+                        PlanId = c.Int(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                        ExercisePlan_ExercisePlanId = c.Int(),
+                    })
+                .PrimaryKey(t => new { t.ClientId, t.PlanId })
+                .ForeignKey("dbo.Clients", t => t.ClientId, cascadeDelete: true)
+                .ForeignKey("dbo.ExercisePlans", t => t.ExercisePlan_ExercisePlanId)
+                .Index(t => t.ClientId)
+                .Index(t => t.ExercisePlan_ExercisePlanId);
+            
             CreateTable(
                 "dbo.Clients",
                 c => new
@@ -20,51 +35,41 @@ namespace Gym.Migrations
                         DietId = c.Int(nullable: false),
                         PlanId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
+                        DietPlan_DietPlanId = c.Int(),
                     })
                 .PrimaryKey(t => t.ClientId)
-                .ForeignKey("dbo.Diets", t => t.DietId, cascadeDelete: true)
-                .ForeignKey("dbo.Plans", t => t.PlanId, cascadeDelete: true)
-                .Index(t => t.DietId)
-                .Index(t => t.PlanId);
+                .ForeignKey("dbo.DietPlans", t => t.DietPlan_DietPlanId)
+                .Index(t => t.DietPlan_DietPlanId);
             
             CreateTable(
-                "dbo.Diets",
+                "dbo.ExercisePlans",
                 c => new
                     {
-                        DietId = c.Int(nullable: false, identity: true),
-                        Weight = c.Int(nullable: false),
-                        Height = c.Int(nullable: false),
-                        ImageName = c.String(),
-                        Description = c.String(maxLength: 500),
-                    })
-                .PrimaryKey(t => t.DietId);
-            
-            CreateTable(
-                "dbo.Plans",
-                c => new
-                    {
-                        PlanId = c.Int(nullable: false, identity: true),
+                        ExercisePlanId = c.Int(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         Duration = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Sessions = c.Int(nullable: false),
+                        Client_ClientId = c.Int(),
                     })
-                .PrimaryKey(t => t.PlanId);
+                .PrimaryKey(t => t.ExercisePlanId)
+                .ForeignKey("dbo.Trainiers", t => t.ExercisePlanId)
+                .ForeignKey("dbo.Clients", t => t.Client_ClientId)
+                .Index(t => t.ExercisePlanId)
+                .Index(t => t.Client_ClientId);
             
             CreateTable(
                 "dbo.Trainiers",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        TrainierId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Surname = c.String(nullable: false),
                         Experience = c.String(),
-                        PlanId = c.Int(nullable: false),
+                        ExercisePlanId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Plans", t => t.Id)
-                .Index(t => t.Id);
+                .PrimaryKey(t => t.TrainierId);
             
             CreateTable(
                 "dbo.Products",
@@ -75,11 +80,20 @@ namespace Gym.Migrations
                         Category = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ImageName = c.String(),
-                        Client_ClientId = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductId)
-                .ForeignKey("dbo.Clients", t => t.Client_ClientId)
-                .Index(t => t.Client_ClientId);
+                .PrimaryKey(t => t.ProductId);
+            
+            CreateTable(
+                "dbo.DietPlans",
+                c => new
+                    {
+                        DietPlanId = c.Int(nullable: false, identity: true),
+                        Weight = c.Int(nullable: false),
+                        Height = c.Int(nullable: false),
+                        ImageName = c.String(),
+                        Description = c.String(maxLength: 500),
+                    })
+                .PrimaryKey(t => t.DietPlanId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -149,6 +163,19 @@ namespace Gym.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.ProductClients",
+                c => new
+                    {
+                        Product_ProductId = c.Int(nullable: false),
+                        Client_ClientId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Product_ProductId, t.Client_ClientId })
+                .ForeignKey("dbo.Products", t => t.Product_ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_ClientId, cascadeDelete: true)
+                .Index(t => t.Product_ProductId)
+                .Index(t => t.Client_ClientId);
+            
         }
         
         public override void Down()
@@ -157,30 +184,38 @@ namespace Gym.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Products", "Client_ClientId", "dbo.Clients");
-            DropForeignKey("dbo.Trainiers", "Id", "dbo.Plans");
-            DropForeignKey("dbo.Clients", "PlanId", "dbo.Plans");
-            DropForeignKey("dbo.Clients", "DietId", "dbo.Diets");
+            DropForeignKey("dbo.Clients", "DietPlan_DietPlanId", "dbo.DietPlans");
+            DropForeignKey("dbo.ProductClients", "Client_ClientId", "dbo.Clients");
+            DropForeignKey("dbo.ProductClients", "Product_ProductId", "dbo.Products");
+            DropForeignKey("dbo.ExercisePlans", "Client_ClientId", "dbo.Clients");
+            DropForeignKey("dbo.ExercisePlans", "ExercisePlanId", "dbo.Trainiers");
+            DropForeignKey("dbo.ClientExercisePlans", "ExercisePlan_ExercisePlanId", "dbo.ExercisePlans");
+            DropForeignKey("dbo.ClientExercisePlans", "ClientId", "dbo.Clients");
+            DropIndex("dbo.ProductClients", new[] { "Client_ClientId" });
+            DropIndex("dbo.ProductClients", new[] { "Product_ProductId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Products", new[] { "Client_ClientId" });
-            DropIndex("dbo.Trainiers", new[] { "Id" });
-            DropIndex("dbo.Clients", new[] { "PlanId" });
-            DropIndex("dbo.Clients", new[] { "DietId" });
+            DropIndex("dbo.ExercisePlans", new[] { "Client_ClientId" });
+            DropIndex("dbo.ExercisePlans", new[] { "ExercisePlanId" });
+            DropIndex("dbo.Clients", new[] { "DietPlan_DietPlanId" });
+            DropIndex("dbo.ClientExercisePlans", new[] { "ExercisePlan_ExercisePlanId" });
+            DropIndex("dbo.ClientExercisePlans", new[] { "ClientId" });
+            DropTable("dbo.ProductClients");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.DietPlans");
             DropTable("dbo.Products");
             DropTable("dbo.Trainiers");
-            DropTable("dbo.Plans");
-            DropTable("dbo.Diets");
+            DropTable("dbo.ExercisePlans");
             DropTable("dbo.Clients");
+            DropTable("dbo.ClientExercisePlans");
         }
     }
 }
