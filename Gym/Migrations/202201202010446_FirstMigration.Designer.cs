@@ -13,7 +13,7 @@ namespace Gym.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202201201741440_FirstMigration"; }
+            get { return "202201202010446_FirstMigration"; }
         }
         
         string IMigrationMetadata.Source

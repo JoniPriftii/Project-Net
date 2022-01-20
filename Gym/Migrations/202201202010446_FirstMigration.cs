@@ -71,6 +71,7 @@ namespace Gym.Migrations
                         Height = c.Int(nullable: false),
                         ImageName = c.String(),
                         Description = c.String(maxLength: 500),
+                        Duration = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.DietPlanId);
             
