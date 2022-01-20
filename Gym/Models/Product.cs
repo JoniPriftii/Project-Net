@@ -1,5 +1,5 @@
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace Gym.Models
         [Display(Name = "ImageName")]
         public string ImageName { get; set; }
 
-        public virtual Client Client { get; set; }
+        public virtual ICollection<Client> Client { get; set; }
     }
 }
 

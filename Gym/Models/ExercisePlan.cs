@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Gym.Models
 {
-    public class Plan
+    public class ExercisePlan
     {
 
-        public int PlanId { get; set; }
+        [ForeignKey("Trainier")]
+        public int ExercisePlanId { get; set; }
         [Required(ErrorMessage = "Please fill the required fields")]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -27,8 +29,8 @@ namespace Gym.Models
         [Display(Name = "Sessions")]
         public int Sessions { get; set; }
 
-        public  virtual Trainier Trainier { get; set; }
+        public virtual Trainier Trainier { get; set; }
 
-        public ICollection<Client> Client { get; set; }
+        public ICollection<ClientExercisePlan> ClientPlan { get; set; }
     }
 }

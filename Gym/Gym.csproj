@@ -181,10 +181,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Diet.cs" />
+    <Compile Include="Models\ClientExercisePlan.cs" />
+    <Compile Include="Models\DietPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\ExercisePlan.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Trainier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

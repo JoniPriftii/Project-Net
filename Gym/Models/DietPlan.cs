@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Diet
+    public class DietPlan
     {
-        public int DietId { get; set; }
+        public int DietPlanId { get; set; }
 
         [Required(ErrorMessage = "Weight is required")]
         [Display(Name = "Suggested Weight")]

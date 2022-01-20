@@ -11,7 +11,7 @@ namespace Gym.Models
     {
 
         [ForeignKey("Plan")]
-        public int Id { get; set; }
+        public int TrainierId { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
         [Display(Name = "Name")]
@@ -23,8 +23,8 @@ namespace Gym.Models
 
         [Display(Name = "Experience")]
         public string Experience { get; set; }
-        public int PlanId { get; set; }
+        public int? ExercisePlanId { get; set; }
 
-        public virtual Plan Plan { get; set; }
+        public virtual ExercisePlan ExercisePlan { get; set; }
     }
 }

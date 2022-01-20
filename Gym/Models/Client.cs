@@ -31,9 +31,9 @@ namespace Gym.Models
         public int PlanId { get; set; }
         public int ProductId { get; set; }
 
-        public  virtual Diet Diet { get; set; }
+        public virtual ICollection<ClientExercisePlan> ClientExercisePlan { get; set; }
 
-        public  virtual Plan Plan { get; set; }
+        public virtual ICollection<ExercisePlan> ExercisePlan { get; set; }
 
         public ICollection<Product> Product { get; set; }
     }
