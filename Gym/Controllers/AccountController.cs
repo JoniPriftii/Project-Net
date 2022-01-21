@@ -17,10 +17,14 @@ namespace Gym.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext context;
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
+
+        
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -171,6 +175,35 @@ namespace Gym.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //metodat e reja
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult RegisterRole()
+        {
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+            ViewBag.UserName = new SelectList(context.Users.ToList(), "UserName", "UserName");
+            return View();
+        }
+
+        //Post /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterRole(RegisterViewModel model, ApplicationUser user)
+        {
+            var userId = context.Users.Where(i => i.UserName == user.UserName).Select(s => s.Id);
+            string updateId = "";
+            foreach (var i in userId)
+            {
+                updateId = i.ToString();
+            }
+            //Kalon rolin tek useri
+            await this.UserManager.AddToRoleAsync(updateId, model.Name);
+            return RedirectToAction("Index", "Home");
+
+        }
+
 
         //
         // GET: /Account/ConfirmEmail
@@ -384,6 +417,9 @@ namespace Gym.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+
+        
+
 
         //
         // POST: /Account/LogOff
