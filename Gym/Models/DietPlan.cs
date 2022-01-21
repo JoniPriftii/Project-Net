@@ -18,6 +18,8 @@ namespace Gym.Models
         [Display(Name = "Suggested Height")]
         public int Height { get; set; }
 
+        [Required(ErrorMessage = "Image Name is required")]
+        [Display(Name = "Image Name")]
         public string ImageName { get; set; }
 
         [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 200)]

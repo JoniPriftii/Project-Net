@@ -24,8 +24,8 @@ namespace Gym.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Price")]
         public decimal Price { get; set; }
-
-        [Display(Name = "ImageName")]
+        [Required(ErrorMessage = "Image Name is required")]
+        [Display(Name = "Image Name")]
         public string ImageName { get; set; }
 
         public virtual ICollection<Client> Client { get; set; }
