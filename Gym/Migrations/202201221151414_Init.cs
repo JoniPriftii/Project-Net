@@ -3,7 +3,7 @@ namespace Gym.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstMigration : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -14,6 +14,7 @@ namespace Gym.Migrations
                         ClientId = c.Int(nullable: false),
                         DietPlanId = c.Int(nullable: false),
                         StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(),
                         IsActive = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => new { t.ClientId, t.DietPlanId })
@@ -29,6 +30,7 @@ namespace Gym.Migrations
                         ClientId = c.Int(nullable: false),
                         ExercisePlanId = c.Int(nullable: false),
                         StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(),
                         IsActive = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => new { t.ClientId, t.ExercisePlanId })
@@ -42,11 +44,11 @@ namespace Gym.Migrations
                 c => new
                     {
                         ClientId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        LastName = c.String(nullable: false, maxLength: 50),
                         Height = c.Int(nullable: false),
                         Weight = c.Int(nullable: false),
-                        PhoneNumber = c.String(nullable: false),
+                        PhoneNumber = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.ClientId);
             
@@ -55,10 +57,10 @@ namespace Gym.Migrations
                 c => new
                     {
                         ProductId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Category = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        Category = c.String(nullable: false, maxLength: 50),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        ImageName = c.String(nullable: false),
+                        ImageName = c.String(nullable: false, maxLength: 500),
                     })
                 .PrimaryKey(t => t.ProductId);
             
@@ -69,9 +71,9 @@ namespace Gym.Migrations
                         DietPlanId = c.Int(nullable: false, identity: true),
                         Weight = c.Int(nullable: false),
                         Height = c.Int(nullable: false),
-                        ImageName = c.String(nullable: false),
-                        Description = c.String(maxLength: 500),
-                        Duration = c.String(nullable: false),
+                        ImageName = c.String(nullable: false, maxLength: 500),
+                        Description = c.String(maxLength: 1000),
+                        DurationInDays = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DietPlanId);
             
@@ -80,29 +82,29 @@ namespace Gym.Migrations
                 c => new
                     {
                         ExercisePlanId = c.Int(nullable: false),
-                        ExercisePlanName = c.String(nullable: false),
-                        Description = c.String(nullable: false),
-                        Duration = c.String(nullable: false),
+                        ExercisePlanName = c.String(nullable: false, maxLength: 50),
+                        Description = c.String(nullable: false, maxLength: 1000),
+                        DurationInDays = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Sessions = c.Int(nullable: false),
-                        ImageName = c.String(nullable: false),
+                        ImageName = c.String(nullable: false, maxLength: 500),
                     })
                 .PrimaryKey(t => t.ExercisePlanId)
-                .ForeignKey("dbo.Trainiers", t => t.ExercisePlanId)
+                .ForeignKey("dbo.Trainers", t => t.ExercisePlanId)
                 .Index(t => t.ExercisePlanId);
             
             CreateTable(
-                "dbo.Trainiers",
+                "dbo.Trainers",
                 c => new
                     {
-                        TrainierId = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        Experience = c.String(nullable: false),
-                        ImageName = c.String(nullable: false),
+                        TrainerId = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(nullable: false, maxLength: 50),
+                        LastName = c.String(nullable: false, maxLength: 50),
+                        ExperienceDescription = c.String(nullable: false, maxLength: 1000),
+                        ImageName = c.String(nullable: false, maxLength: 500),
                         ExercisePlanId = c.Int(),
                     })
-                .PrimaryKey(t => t.TrainierId);
+                .PrimaryKey(t => t.TrainerId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -193,7 +195,7 @@ namespace Gym.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ExercisePlans", "ExercisePlanId", "dbo.Trainiers");
+            DropForeignKey("dbo.ExercisePlans", "ExercisePlanId", "dbo.Trainers");
             DropForeignKey("dbo.ClientExercisePlans", "ExercisePlanId", "dbo.ExercisePlans");
             DropForeignKey("dbo.ClientDietPlans", "DietPlanId", "dbo.DietPlans");
             DropForeignKey("dbo.ProductClients", "Client_ClientId", "dbo.Clients");
@@ -219,7 +221,7 @@ namespace Gym.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Trainiers");
+            DropTable("dbo.Trainers");
             DropTable("dbo.ExercisePlans");
             DropTable("dbo.DietPlans");
             DropTable("dbo.Products");

@@ -20,14 +20,16 @@ namespace Gym.Models
 
         [Required(ErrorMessage = "Image Name is required")]
         [Display(Name = "Image Name")]
+        [MaxLength(500)]
         public string ImageName { get; set; }
 
-        [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 200)]
+        [StringLength(1000, ErrorMessage = "String must not be longer than 1000", MinimumLength = 200)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Duration is required")]
-        [Display(Name = "Duration")]
-        public string Duration { get; set; }
+        [Required(ErrorMessage = "Duration in days is required")]
+        [Display(Name = "Duration in days")]
+        public int DurationInDays { get; set; }
+
         public virtual ICollection<ClientDietPlan> ClientDietPlans { get; set; }
     }
 }

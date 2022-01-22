@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.14\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -175,22 +178,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201211638378_FirstMigration.cs" />
-    <Compile Include="Migrations\202201211638378_FirstMigration.Designer.cs">
-      <DependentUpon>202201211638378_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202201221151414_Init.cs" />
+    <Compile Include="Migrations\202201221151414_Init.Designer.cs">
+      <DependentUpon>202201221151414_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ClientDietPlan.cs" />
-    <Compile Include="Models\ClientExercisePlan.cs" />
-    <Compile Include="Models\DietPlan.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ExercisePlan.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Trainier.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\Entities\Client.cs" />
+    <Compile Include="Models\Entities\ClientDietPlan.cs" />
+    <Compile Include="Models\Entities\ClientExercisePlan.cs" />
+    <Compile Include="Models\Entities\DietPlan.cs" />
+    <Compile Include="Models\Entities\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Entities\ExercisePlan.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\Roles.cs" />
+    <Compile Include="Models\Entities\Trainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -273,8 +276,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201211638378_FirstMigration.resx">
-      <DependentUpon>202201211638378_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201221151414_Init.resx">
+      <DependentUpon>202201221151414_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

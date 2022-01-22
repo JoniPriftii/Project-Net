@@ -8,13 +8,14 @@ namespace Gym.Models
 {
     public class Client
     {
-
         public int ClientId { get; set; }
         [Required(ErrorMessage = "Enter your First Name")]
         [Display(Name = "First Name")]
+        [MaxLength(50)]
         public string Name { get; set; }
         [Required(ErrorMessage = "Enter your Last Name")]
         [Display(Name = "Last Name")]
+        [MaxLength(50)]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Enter your height")]
         [Display(Name = "Body Height")]
@@ -25,6 +26,7 @@ namespace Gym.Models
         public int Weight { get; set; }
         [Required(ErrorMessage = "Enter your phone number")]
         [Display(Name = "Phone Number")]
+        [MaxLength(50)]
         public string PhoneNumber { get; set; }
 
         public virtual ICollection<ClientDietPlan> ClientDietPlan { get; set; }
