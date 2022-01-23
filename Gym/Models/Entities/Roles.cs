@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Gym.Models
 {
-    public class Roles
+    public class Roles 
     {
         public int Id { get; set; }
         public string RoleName { get; set; }

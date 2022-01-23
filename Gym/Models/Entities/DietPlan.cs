@@ -10,6 +10,12 @@ namespace Gym.Models
     {
         public int DietPlanId { get; set; }
 
+        [Required(ErrorMessage = "Category is required")]
+        [Display(Name = "Category")]
+        [MaxLength(70)]
+
+        public string Category { get; set; }
+
         [Required(ErrorMessage = "Weight is required")]
         [Display(Name = "Suggested Weight")]
         public int Weight { get; set; }
