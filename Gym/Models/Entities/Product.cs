@@ -31,7 +31,7 @@ namespace Gym.Models
         [MaxLength(500)]
         public string ImageName { get; set; }
 
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
 

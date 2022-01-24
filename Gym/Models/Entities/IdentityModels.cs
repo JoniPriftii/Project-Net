@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Security.Claims;
@@ -12,6 +14,19 @@ namespace Gym.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required(ErrorMessage = "Enter your First Name")]
+        [Display(Name = "First Name")]
+        [MaxLength(50)]
+        public string Name { get; set; }
+        [Required(ErrorMessage = "Enter your Last Name")]
+        [Display(Name = "Last Name")]
+        [MaxLength(50)]
+        public string LastName { get; set; }
+        public virtual ICollection<UserExercisePlan> UserExercisePlan { get; set; }
+        public virtual ICollection<UserDietPlan> UserDietPlan { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
+
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -30,9 +45,8 @@ namespace Gym.Models
         public DbSet<ExercisePlan> ExercisePlans { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
-        public DbSet<ClientExercisePlan> ClientExercisePlans { get; set; }
-        public DbSet<ClientDietPlan> ClientDietPlans { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<UserExercisePlan> UserExercisePlans { get; set; }
+        public DbSet<UserDietPlan> UserDietPlans { get; set; }
 
 
         public ApplicationDbContext()

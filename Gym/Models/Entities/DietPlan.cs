@@ -10,6 +10,11 @@ namespace Gym.Models
     {
         public int DietPlanId { get; set; }
 
+        [Required(ErrorMessage = "Diet Name is required")]
+        [Display(Name = "Diet Name")]
+        [MaxLength(70)]
+        public string Name { get; set; }
+
         [Required(ErrorMessage = "Category is required")]
         [Display(Name = "Category")]
         [MaxLength(70)]
@@ -29,13 +34,13 @@ namespace Gym.Models
         [MaxLength(500)]
         public string ImageName { get; set; }
 
-        [StringLength(1000, ErrorMessage = "String must not be longer than 1000", MinimumLength = 200)]
+        [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 30)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Duration in days is required")]
         [Display(Name = "Duration in days")]
         public int DurationInDays { get; set; }
 
-        public virtual ICollection<ClientDietPlan> ClientDietPlans { get; set; }
+        public virtual ICollection<UserDietPlan> UserDietPlan { get; set; }
     }
 }

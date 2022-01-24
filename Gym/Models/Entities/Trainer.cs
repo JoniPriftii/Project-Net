@@ -18,7 +18,7 @@ namespace Gym.Models
 
         [Required(ErrorMessage = "Experience description is required")]
         [Display(Name = "Experience Description")]
-        [StringLength(1000, ErrorMessage = "String must not be longer than 1000", MinimumLength = 200)]
+        [StringLength(500, ErrorMessage = "String must not be longer than 1000", MinimumLength = 30)]
         public string ExperienceDescription { get; set; }
 
         [Required(ErrorMessage = "Image Name is required")]

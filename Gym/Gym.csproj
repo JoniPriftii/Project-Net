@@ -178,19 +178,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201221151414_Init.cs" />
-    <Compile Include="Migrations\202201221151414_Init.Designer.cs">
-      <DependentUpon>202201221151414_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201231614435_PlanCategory.cs" />
-    <Compile Include="Migrations\202201231614435_PlanCategory.Designer.cs">
-      <DependentUpon>202201231614435_PlanCategory.cs</DependentUpon>
+    <Compile Include="Migrations\202201241821533_Init.cs" />
+    <Compile Include="Migrations\202201241821533_Init.Designer.cs">
+      <DependentUpon>202201241821533_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\Entities\Client.cs" />
-    <Compile Include="Models\Entities\ClientDietPlan.cs" />
-    <Compile Include="Models\Entities\ClientExercisePlan.cs" />
+    <Compile Include="Models\Entities\UserDietPlan.cs" />
+    <Compile Include="Models\Entities\UserExercisePlan.cs" />
     <Compile Include="Models\Entities\DietPlan.cs" />
     <Compile Include="Models\Entities\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
@@ -210,6 +205,29 @@
     <Content Include="Content\bootstrapStamina.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\icomoon.css" />
+    <Content Include="Content\Images\DietPlan\CarbohydratesDietPlan.jpg" />
+    <Content Include="Content\Images\DietPlan\ProteinBuildMuscle.jpg" />
+    <Content Include="Content\Images\DietPlan\ProteinsDietPlan.jpg" />
+    <Content Include="Content\Images\DietPlan\ProteinSupplement.jpg" />
+    <Content Include="Content\Images\DietPlan\RedMeat.jpg" />
+    <Content Include="Content\Images\DietPlan\ProductsToGainWeight.jpg" />
+    <Content Include="Content\Images\ExercisePlan\ExerciseBox2.jpg" />
+    <Content Include="Content\Images\ExercisePlan\ExerciseBox1.jpg" />
+    <Content Include="Content\Images\ExercisePlan\ExerciseGym.png" />
+    <Content Include="Content\Images\ExercisePlan\ExerciseYoga.jpg" />
+    <Content Include="Content\Images\Product Images\gymgloves.jpg" />
+    <Content Include="Content\Images\Product Images\gymhoodie.jpg" />
+    <Content Include="Content\Images\Product Images\gymprotein.jpg" />
+    <Content Include="Content\Images\Product Images\gymshirt.jpg" />
+    <Content Include="Content\Images\Product\gymgloves.jpg" />
+    <Content Include="Content\Images\Product\gymhoodie.jpg" />
+    <Content Include="Content\Images\Product\gymprotein.jpg" />
+    <Content Include="Content\Images\Product\gymshirt.jpg" />
+    <Content Include="Content\Images\Trainer\Trainer1.jpg" />
+    <Content Include="Content\Images\Trainer\Trainer2.jpg" />
+    <Content Include="Content\Images\Trainer\Trainer3.jpg" />
+    <Content Include="Content\Images\Trainer\Trainer4.jpg" />
+    <Content Include="Content\Images\Trainer\Trainer5.jpg" />
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\owl.theme.default.min.css" />
@@ -404,11 +422,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201221151414_Init.resx">
-      <DependentUpon>202201221151414_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201231614435_PlanCategory.resx">
-      <DependentUpon>202201231614435_PlanCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201241821533_Init.resx">
+      <DependentUpon>202201241821533_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
