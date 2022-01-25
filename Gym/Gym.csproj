@@ -178,9 +178,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201242350244_Init.cs" />
-    <Compile Include="Migrations\202201242350244_Init.Designer.cs">
-      <DependentUpon>202201242350244_Init.cs</DependentUpon>
+    <Compile Include="Migrations\202201250914124_Init.cs" />
+    <Compile Include="Migrations\202201250914124_Init.Designer.cs">
+      <DependentUpon>202201250914124_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201250915575_DietPlanSeeds.cs" />
+    <Compile Include="Migrations\202201250915575_DietPlanSeeds.Designer.cs">
+      <DependentUpon>202201250915575_DietPlanSeeds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201250919432_ExercisePlanSeeds.cs" />
+    <Compile Include="Migrations\202201250919432_ExercisePlanSeeds.Designer.cs">
+      <DependentUpon>202201250919432_ExercisePlanSeeds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201250923325_ProductSeeds.cs" />
+    <Compile Include="Migrations\202201250923325_ProductSeeds.Designer.cs">
+      <DependentUpon>202201250923325_ProductSeeds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201250940221_TrainerSeed.cs" />
+    <Compile Include="Migrations\202201250940221_TrainerSeed.Designer.cs">
+      <DependentUpon>202201250940221_TrainerSeed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -432,8 +448,20 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201242350244_Init.resx">
-      <DependentUpon>202201242350244_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201250914124_Init.resx">
+      <DependentUpon>202201250914124_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201250915575_DietPlanSeeds.resx">
+      <DependentUpon>202201250915575_DietPlanSeeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201250919432_ExercisePlanSeeds.resx">
+      <DependentUpon>202201250919432_ExercisePlanSeeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201250923325_ProductSeeds.resx">
+      <DependentUpon>202201250923325_ProductSeeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201250940221_TrainerSeed.resx">
+      <DependentUpon>202201250940221_TrainerSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
