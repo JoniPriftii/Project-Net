@@ -34,7 +34,7 @@ namespace Gym.Models
         [MaxLength(500)]
         public string ImageName { get; set; }
 
-        [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 30)]
+        [StringLength(2000, ErrorMessage = "String must not be longer than 2000", MinimumLength = 30)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Duration in days is required")]

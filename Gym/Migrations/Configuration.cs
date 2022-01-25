@@ -15,10 +15,10 @@ namespace Gym.Migrations
 
         protected override void Seed(Gym.Models.ApplicationDbContext context)
         {
-
+            /*
              //-----------------------DietPlan Seeds------------------------------
 
-           /* IList<DietPlan> dietPlans = new List<DietPlan>()
+            IList<DietPlan> dietPlans = new List<DietPlan>()
             {
                new DietPlan
                {
@@ -123,156 +123,157 @@ namespace Gym.Migrations
             };
              context.DietPlans.AddRange(dietPlans);
 
-         
-           
-
-                        //-----------------------Exercise Seeds------------------------------
-
-
-                        IList<ExercisePlan> exercises = new List<ExercisePlan>()
-                        {
-                            new ExercisePlan 
-                            {
-                                ExercisePlanId = 1 ,
-                                ExercisePlanName = "Beginner Boxing" ,
-                                Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
-                                "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
-                                "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",
-                                DurationInDays = 90,
-                                Price = 150,
-                                ImageName = "ExerciseBox1",
-                                Sessions = 3 
-                            },
-                            new ExercisePlan 
-                            { 
-                                ExercisePlanId = 2 , 
-                                ExercisePlanName = "Advance Boxing" , 
-                                Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
-                                "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
-                                "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",
-                                DurationInDays = 120,
-                                Price = 300,
-                                ImageName = "ExerciseBox2",
-                                Sessions = 5 
-                            },
-                             new ExercisePlan 
-                             { 
-                                  ExercisePlanId = 3 , 
-                                  ExercisePlanName = "Regular Gym",
-                                  Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
-                                  "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
-                                  "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",                    DurationInDays = 30, 
-                                  Price = 30 , 
-                                  ImageName = "ExerciseGym", 
-                                  Sessions = 3 
-                             },
-                             new ExercisePlan 
-                             {
-                                  ExercisePlanId = 4 ,
-                                  ExercisePlanName = "Yoga" ,
-                                  Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
-                                  "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
-                                  "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",                    DurationInDays = 30, 
-                                  Price = 20 , 
-                                  ImageName = "ExerciseYoga" , 
-                                  Sessions = 4
-                             }
-
-                        };
-                        _ = context.ExercisePlans.AddRange(exercises);
             base.Seed(context);
+            
+
+
+
+               //-----------------------Exercise Seeds------------------------------
+
+
+               IList<ExercisePlan> exercises = new List<ExercisePlan>()
+               {
+                   new ExercisePlan 
+                   {
+                       ExercisePlanId = 1 ,
+                       ExercisePlanName = "Beginner Boxing" ,
+                       Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
+                       "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
+                       "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",
+                       DurationInDays = 90,
+                       Price = 150,
+                       ImageName = "ExerciseBox1",
+                       Sessions = 3 
+                   },
+                   new ExercisePlan 
+                   { 
+                       ExercisePlanId = 2 , 
+                       ExercisePlanName = "Advance Boxing" , 
+                       Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
+                       "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
+                       "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",
+                       DurationInDays = 120,
+                       Price = 300,
+                       ImageName = "ExerciseBox2",
+                       Sessions = 5 
+                   },
+                    new ExercisePlan 
+                    { 
+                         ExercisePlanId = 3 , 
+                         ExercisePlanName = "Regular Gym",
+                         Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
+                         "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
+                         "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",                    DurationInDays = 30, 
+                         Price = 30 , 
+                         ImageName = "ExerciseGym", 
+                         Sessions = 3 
+                    },
+                    new ExercisePlan 
+                    {
+                         ExercisePlanId = 4 ,
+                         ExercisePlanName = "Yoga" ,
+                         Description = "For 13 years, professional boxing courses developed by professionals in the field of boxing, have developed the defensive and offensive skills of many trainers who have followed our course." +
+                         "Discipline, courage and hard work, motivate and push strongly towards the goal of creating modern fighters in the ring as well as in everyday life." +
+                         "This plan is perfect for beginners and for all enthusiasts of this field who have always wanted to develop their defensive ability and dexterity.",                    DurationInDays = 30, 
+                         Price = 20 , 
+                         ImageName = "ExerciseYoga" , 
+                         Sessions = 4
+                    }
+
+               };
+               _ = context.ExercisePlans.AddRange(exercises);
 
 
 
 
-             //-----------------------Trainer Seeds------------------------------
+    //-----------------------Trainer Seeds------------------------------
 
 
-             IList<Trainer> trainer = new List<Trainer>()
-             {
-                 new Trainer 
-                 {
-                     TrainerId = 1, 
-                     FirstName = "Leslie", 
-                     LastName="Smith", 
-                     ExperienceDescription ="I work in a musculoskeletal sports injury clinic and is also the first team sports therapist for Cambridge United Football Club. "+
-                     "I completed a BSc Sports Therapy degree at the University of Hertfordshire, graduating in 2019. During my degree, i completed an 11-month industry placement, where he developed the contacts and relationships that led to get my job. "+
-                     "I was offered the chance to work with Cambridge United FC’s first team.",
-                     ImageName ="trainer1",
-                     ExercisePlanId=1
-                 },
-                 new Trainer 
-                 { 
-                     TrainerId = 2, 
-                     FirstName = "Emily ", 
-                     LastName="Davies", 
-                     ExperienceDescription="I am graduated from Bournemouth University in 2020 as a sports therapist.My current job is as a part-time sports therapy lecturer at Bournemouth University, which I obtained through my lecturer shortly after my finishing my studies."+
-                     "I am the unit lead for one of the first year modules - Early careers professionalism. My degree was incredibly relevant to my current job as this is the subject that I teach. "+
-                     "The experiences I gained throughout my degree developed my knowledge and skillset within sports therapy, which I am now able to share with my students.",
-                     ImageName ="trainer3",
-                     ExercisePlanId=2
-                 },
-                 new Trainer 
-                 { 
-                     TrainerId = 3, 
-                     FirstName = "Kal", 
-                     LastName=" Ratcliffe", 
-                     ExperienceDescription="I studied for a BSc Nutritional Therapy at the University of West London, graduating in 2018.I am self-employed and have my own clinic/practice, which I set up shortly after graduating."+
-                     "My degree was vital as it provided me with the theoretical and practical knowledge of the science of nutrition. I have invested in developing both my clinical practice and myself by working with a business coach",
-                     ImageName ="Trainer2", 
-                     ExercisePlanId=3
-                 },
-                 new Trainer 
-                 { 
-                     TrainerId = 4, 
-                     FirstName = "Helena ", 
-                     LastName="Potter", 
-                     ExperienceDescription="I studied History with a year abroad at the University of Birmingham. Volunteering and part-time work are the main ways into coaching, and many coaches continue in this capacity alongside other employment."+
-                     "Getting involved with activities in your chosen sport at a regional level is advisable.",
-                     ImageName ="trainer5",
-                     ExercisePlanId=4
-                 },
-             };
-             _ = context.Trainers.AddRange(trainer);
+    IList<Trainer> trainer = new List<Trainer>()
+    {
+        new Trainer 
+        {
+            TrainerId = 1, 
+            FirstName = "Leslie", 
+            LastName="Smith", 
+            ExperienceDescription ="I work in a musculoskeletal sports injury clinic and is also the first team sports therapist for Cambridge United Football Club. "+
+            "I completed a BSc Sports Therapy degree at the University of Hertfordshire, graduating in 2019. During my degree, i completed an 11-month industry placement, where he developed the contacts and relationships that led to get my job. "+
+            "I was offered the chance to work with Cambridge United FC’s first team.",
+            ImageName ="trainer1",
+            ExercisePlanId=1
+        },
+        new Trainer 
+        { 
+            TrainerId = 2, 
+            FirstName = "Emily ", 
+            LastName="Davies", 
+            ExperienceDescription="I am graduated from Bournemouth University in 2020 as a sports therapist.My current job is as a part-time sports therapy lecturer at Bournemouth University, which I obtained through my lecturer shortly after my finishing my studies."+
+            "I am the unit lead for one of the first year modules - Early careers professionalism. My degree was incredibly relevant to my current job as this is the subject that I teach. "+
+            "The experiences I gained throughout my degree developed my knowledge and skillset within sports therapy, which I am now able to share with my students.",
+            ImageName ="trainer3",
+            ExercisePlanId=2
+        },
+        new Trainer 
+        { 
+            TrainerId = 3, 
+            FirstName = "Kal", 
+            LastName=" Ratcliffe", 
+            ExperienceDescription="I studied for a BSc Nutritional Therapy at the University of West London, graduating in 2018.I am self-employed and have my own clinic/practice, which I set up shortly after graduating."+
+            "My degree was vital as it provided me with the theoretical and practical knowledge of the science of nutrition. I have invested in developing both my clinical practice and myself by working with a business coach",
+            ImageName ="Trainer2", 
+            ExercisePlanId=3
+        },
+        new Trainer 
+        { 
+            TrainerId = 4, 
+            FirstName = "Helena ", 
+            LastName="Potter", 
+            ExperienceDescription="I studied History with a year abroad at the University of Birmingham. Volunteering and part-time work are the main ways into coaching, and many coaches continue in this capacity alongside other employment."+
+            "Getting involved with activities in your chosen sport at a regional level is advisable.",
+            ImageName ="trainer5",
+            ExercisePlanId=4
+        },
+    };
+    _ = context.Trainers.AddRange(trainer);
 
 
 
 
-             //------------------- Produktes Seeds ----------------------------
+    //------------------- Produktes Seeds ----------------------------
 
 
-             IList<Product> products = new List<Product>()
-             {
-                 new Product
-                 {
-                     ProductId=2 , 
-                     Name="Gym Shirt", 
-                     Category="Clothes" , 
-                     Price=25, 
-                     ImageName="gymshirt",
+    IList<Product> products = new List<Product>()
+    {
+        new Product
+        {
+            ProductId=2 , 
+            Name="Gym Shirt", 
+            Category="Clothes" , 
+            Price=25, 
+            ImageName="gymshirt",
 
-                 },
-                 new Product
-                 {
-                     ProductId=3 , 
-                     Name="Gym Hoodie", 
-                     Category="Clothes" , 
-                     Price=15, 
-                     ImageName="gymhoodie"
-                 },
-                 new Product
-                 {
-                     ProductId=4 , 
-                     Name="Pure Whey Protein", 
-                     Category="Suplements" , 
-                     Price=85, 
-                     ImageName="gymprotein"
-                 },
+        },
+        new Product
+        {
+            ProductId=3 , 
+            Name="Gym Hoodie", 
+            Category="Clothes" , 
+            Price=15, 
+            ImageName="gymhoodie"
+        },
+        new Product
+        {
+            ProductId=4 , 
+            Name="Pure Whey Protein", 
+            Category="Suplements" , 
+            Price=85, 
+            ImageName="gymprotein"
+        },
 
 
-             };
+    };
 
-             context.Products.AddRange(products);*/
+    context.Products.AddRange(products);*/
 
 
 

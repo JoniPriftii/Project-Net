@@ -9,7 +9,7 @@ namespace Gym.Models
 {
     public class ExercisePlan
     {
-        [ForeignKey("Trainer")]
+        
         public int ExercisePlanId { get; set; }
 
         [Required(ErrorMessage = "Please fill out the required field")]
@@ -19,7 +19,7 @@ namespace Gym.Models
 
         [Required(ErrorMessage = "Please fill out the required field")]
         [Display(Name = "Description")]
-        [StringLength(500, ErrorMessage = "String must not be longer than 500", MinimumLength = 30)]
+        [StringLength(1000, ErrorMessage = "String must not be longer than 1000", MinimumLength = 30)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Please fill out the required field")]
@@ -39,8 +39,8 @@ namespace Gym.Models
         [Display(Name = "Image Name")]
         [MaxLength(500)]
         public string ImageName { get; set; }
-
-        public virtual Trainer Trainer { get; set; }
+       
+        public virtual ICollection<Trainer> Trainer { get; set; }
 
         public virtual ICollection<UserExercisePlan> UserExercisePlan { get; set; }
     }

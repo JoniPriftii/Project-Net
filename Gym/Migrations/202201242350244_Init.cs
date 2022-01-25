@@ -17,7 +17,7 @@ namespace Gym.Migrations
                         Weight = c.Int(nullable: false),
                         Height = c.Int(nullable: false),
                         ImageName = c.String(nullable: false, maxLength: 500),
-                        Description = c.String(maxLength: 500),
+                        Description = c.String(maxLength: 2000),
                         DurationInDays = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DietPlanId);
@@ -43,17 +43,15 @@ namespace Gym.Migrations
                 "dbo.ExercisePlans",
                 c => new
                     {
-                        ExercisePlanId = c.Int(nullable: false),
+                        ExercisePlanId = c.Int(nullable: false, identity: true),
                         ExercisePlanName = c.String(nullable: false, maxLength: 50),
-                        Description = c.String(nullable: false, maxLength: 500),
+                        Description = c.String(nullable: false, maxLength: 1000),
                         DurationInDays = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Sessions = c.Int(nullable: false),
                         ImageName = c.String(nullable: false, maxLength: 500),
                     })
-                .PrimaryKey(t => t.ExercisePlanId)
-                .ForeignKey("dbo.Trainers", t => t.ExercisePlanId)
-                .Index(t => t.ExercisePlanId);
+                .PrimaryKey(t => t.ExercisePlanId);
             
             CreateTable(
                 "dbo.Trainers",
@@ -62,11 +60,13 @@ namespace Gym.Migrations
                         TrainerId = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
-                        ExperienceDescription = c.String(nullable: false, maxLength: 500),
+                        ExperienceDescription = c.String(nullable: false, maxLength: 2000),
                         ImageName = c.String(nullable: false, maxLength: 500),
-                        ExercisePlanId = c.Int(),
+                        ExercisePlanId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.TrainerId);
+                .PrimaryKey(t => t.TrainerId)
+                .ForeignKey("dbo.ExercisePlans", t => t.ExercisePlanId, cascadeDelete: true)
+                .Index(t => t.ExercisePlanId);
             
             CreateTable(
                 "dbo.UserExercisePlans",
@@ -193,7 +193,7 @@ namespace Gym.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.UserExercisePlans", "ExercisePlanId", "dbo.ExercisePlans");
-            DropForeignKey("dbo.ExercisePlans", "ExercisePlanId", "dbo.Trainers");
+            DropForeignKey("dbo.Trainers", "ExercisePlanId", "dbo.ExercisePlans");
             DropForeignKey("dbo.UserDietPlans", "DietPlanId", "dbo.DietPlans");
             DropIndex("dbo.ApplicationUserProducts", new[] { "Product_ProductId" });
             DropIndex("dbo.ApplicationUserProducts", new[] { "ApplicationUser_Id" });
@@ -205,7 +205,7 @@ namespace Gym.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.UserExercisePlans", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.UserExercisePlans", new[] { "ExercisePlanId" });
-            DropIndex("dbo.ExercisePlans", new[] { "ExercisePlanId" });
+            DropIndex("dbo.Trainers", new[] { "ExercisePlanId" });
             DropIndex("dbo.UserDietPlans", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.UserDietPlans", new[] { "DietPlanId" });
             DropTable("dbo.ApplicationUserProducts");

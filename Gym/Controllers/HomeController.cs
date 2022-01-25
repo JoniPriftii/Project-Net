@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using Gym.Models;
+using log4net;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Web.Mvc;
 
 namespace Gym.Controllers
 {
@@ -6,6 +10,7 @@ namespace Gym.Controllers
     public class HomeController : Controller
     {
         
+
         public ActionResult Index()
         {
             return View();
