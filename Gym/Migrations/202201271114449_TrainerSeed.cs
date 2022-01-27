@@ -11,7 +11,7 @@ namespace Gym.Migrations
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
-        IList<Trainer> trainer = new List<Trainer>()
+            IList<Trainer> trainer = new List<Trainer>()
             {
                 new Trainer
                 {
@@ -56,10 +56,10 @@ namespace Gym.Migrations
                     ExercisePlanId=4
                 },
             };
-        _ = context.Trainers.AddRange(trainer);
+            _ = context.Trainers.AddRange(trainer);
             _ = context.SaveChanges();
-}
-        
+        }
+
         public override void Down()
         {
         }

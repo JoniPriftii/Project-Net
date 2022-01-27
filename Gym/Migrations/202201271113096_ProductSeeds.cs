@@ -4,7 +4,7 @@ namespace Gym.Migrations
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ProductSeeds : DbMigration
     {
         ApplicationDbContext context = new ApplicationDbContext();

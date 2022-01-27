@@ -4,7 +4,7 @@ namespace Gym.Migrations
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ExercisePlanSeeds : DbMigration
     {
         ApplicationDbContext context = new ApplicationDbContext();
@@ -63,7 +63,7 @@ namespace Gym.Migrations
             _ = context.ExercisePlans.AddRange(exercises);
             context.SaveChanges();
         }
-        
+
         public override void Down()
         {
         }

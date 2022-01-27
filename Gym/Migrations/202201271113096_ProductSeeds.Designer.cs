@@ -7,13 +7,13 @@ namespace Gym.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DietPlanSeeds : IMigrationMetadata
+    public sealed partial class ProductSeeds : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DietPlanSeeds));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ProductSeeds));
         
         string IMigrationMetadata.Id
         {
-            get { return "202201250915575_DietPlanSeeds"; }
+            get { return "202201271113096_ProductSeeds"; }
         }
         
         string IMigrationMetadata.Source
