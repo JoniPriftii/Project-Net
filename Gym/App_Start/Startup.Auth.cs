@@ -54,15 +54,15 @@ namespace Gym
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "659924645194453",
+               appSecret: "523ea99b5989977f09617e105fadef56");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "971911728432-tu9lr608eejjoiqg37j3kv9e370d49rn.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }
