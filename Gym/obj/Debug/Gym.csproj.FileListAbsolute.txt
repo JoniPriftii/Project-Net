@@ -325,7 +325,6 @@ C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.pdb
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.Migrations.First.resources
 C:\Users\User\Desktop\abc\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache
-C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.FirstMigration.resources
 C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.csproj.GenerateResource.cache
 C:\Users\Leonard\Desktop\joel\Project-Net\Gym\bin\Gym.dll.config
 C:\Users\Leonard\Desktop\joel\Project-Net\Gym\bin\Gym.dll
@@ -547,3 +546,10 @@ C:\Users\User\Desktop\projekti\Project-Net\Gym\obj\Debug\Gym.csproj.CoreCompileI
 C:\Users\User\Desktop\projekti\Project-Net\Gym\obj\Debug\Gym.csproj.CopyComplete
 C:\Users\User\Desktop\projekti\Project-Net\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\projekti\Project-Net\Gym\obj\Debug\Gym.pdb
+C:\Users\User\Desktop\Project-Net\Gym\bin\log4net.dll
+C:\Users\User\Desktop\Project-Net\Gym\bin\log4net.xml
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.Init.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.DietPlanSeeds.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.ExercisePlanSeeds.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.ProductSeeds.resources
+C:\Users\User\Desktop\Project-Net\Gym\obj\Debug\Gym.Migrations.TrainerSeed.resources
