@@ -172,10 +172,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DietPlansController.cs" />
+    <Compile Include="Controllers\ExercisePlansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Controllers\TrainierController.cs" />
+    <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -431,6 +434,26 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\AssignRoleToUser.cshtml" />
     <Content Include="Views\Account\RegisterRole.cshtml" />
+    <Content Include="Views\Trainers\Create.cshtml" />
+    <Content Include="Views\Trainers\Delete.cshtml" />
+    <Content Include="Views\Trainers\Details.cshtml" />
+    <Content Include="Views\Trainers\Edit.cshtml" />
+    <Content Include="Views\Trainers\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\DietPlans\Create.cshtml" />
+    <Content Include="Views\DietPlans\Delete.cshtml" />
+    <Content Include="Views\DietPlans\Details.cshtml" />
+    <Content Include="Views\DietPlans\Edit.cshtml" />
+    <Content Include="Views\DietPlans\Index.cshtml" />
+    <Content Include="Views\ExercisePlans\Create.cshtml" />
+    <Content Include="Views\ExercisePlans\Delete.cshtml" />
+    <Content Include="Views\ExercisePlans\Details.cshtml" />
+    <Content Include="Views\ExercisePlans\Edit.cshtml" />
+    <Content Include="Views\ExercisePlans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
