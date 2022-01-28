@@ -64,7 +64,16 @@ namespace Gym.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Enter your First Name")]
+        [Display(Name = "First Name")]
+        [MaxLength(50)]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Enter your Last Name")]
+        [Display(Name = "Last Name")]
+        [MaxLength(50)]
+        public string LastName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

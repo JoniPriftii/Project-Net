@@ -18,6 +18,7 @@ namespace Gym.Models
         [Display(Name = "First Name")]
         [MaxLength(50)]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Enter your Last Name")]
         [Display(Name = "Last Name")]
         [MaxLength(50)]

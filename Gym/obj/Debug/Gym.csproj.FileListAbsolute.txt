@@ -784,3 +784,4 @@ C:\Users\User\Desktop\Prove Gym\Gym\obj\Debug\Gym.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Prove Gym\Gym\obj\Debug\Gym.csproj.CopyComplete
 C:\Users\User\Desktop\Prove Gym\Gym\obj\Debug\Gym.dll
 C:\Users\User\Desktop\Prove Gym\Gym\obj\Debug\Gym.pdb
+C:\Users\User\Desktop\Prove Gym\Gym\obj\Debug\Gym.csprojAssemblyReference.cache
