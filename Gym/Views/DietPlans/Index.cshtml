@@ -2,68 +2,41 @@
 
 @{
     ViewBag.Title = "Index";
+
 }
 
-<h2>Index</h2>
+<div style="padding-left: initial; padding-right: initial; padding-top:100px; padding-bottom:70px">
+    <div id=" fh5co-trainer">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Height)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DurationInDays)
-        </th>
-        <th></th>
-    </tr>
+        <div class="container">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DurationInDays)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DietPlanId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DietPlanId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DietPlanId })
-        </td>
-    </tr>
-}
+            <div class="row animate-box">
 
-</table>
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371;  padding-top:20px; ">
+                    <h2>Click diet image for more details</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row" style="padding-left:80px; padding-right:80px; padding-bottom:40px; padding-top:40px">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-sm-4 animate-box">
+
+                    <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
+                        <h3 style="color:#F25B10">@item.Name</h3>
+                        <a href='@Url.Action("Details", "DietPlans", new {id=item.DietPlanId })'>
+                            <img class="img-responsive" src="~/Content/Images/DietPlan/ProteinsDietPlan.jpg" alt="trainer">
+                        </a>
+                        <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
+
+                    </div>
+                    <br /><br /><br />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

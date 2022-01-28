@@ -4,71 +4,56 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>DietPlan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+<div style="padding-left: initial; padding-right: initial; padding-top:70px; padding-bottom:100px">
+    <div id=" fh5co-trainer">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+        <div class="container">
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+            <div class="row animate-box">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Weight)
-        </dt>
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371; padding-top:20px; padding-bottom:1px;">
+                    <h2>@Model.Category</h2>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Weight)
-        </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Height)
-        </dt>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Height)
-        </dd>
+        <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageName)
-        </dt>
+            <div style="padding-left:160px; padding-right:100px; ">
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>
+                <div class="trainer" style=" padding-left: 100px;padding-bottom: 100px; padding-top: 50px;">
+                    <h2 style="color:#F25B10; padding-left:220px; padding-right:100px;">@Model.Name</h2>
+                    <img class="img-responsive" src="~/Content/Images/DietPlan/ProteinsDietPlan.jpg" alt="trainer" , width="100" height="300">
+                    <div style="padding-right:140px;padding-top:40px; color:#F25B10; font-size:large">
+                        @Html.DisplayNameFor(model => model.Description):@Html.DisplayFor(model => model.Description)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                        <br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                        @Html.DisplayNameFor(model => model.Weight): @Html.DisplayFor(model => model.Weight)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DurationInDays)
-        </dt>
+                        <br /><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.DurationInDays)
-        </dd>
+                        @Html.DisplayNameFor(model => model.Height): @Html.DisplayFor(model => model.Height)
 
-    </dl>
+                        <br /><br />
+
+                        @Html.DisplayNameFor(model => model.DurationInDays): @Html.DisplayFor(model => model.DurationInDays)
+                    </div>
+                </div>
+                <br /><br />
+                <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
+                    @Html.ActionLink("Follow Diet Plan", "Create", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DietPlanId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+<dt>
