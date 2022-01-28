@@ -8,7 +8,7 @@ namespace Gym.Models
     {
         [Key]
         [Column(Order = 1)]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Key]
         [Column(Order = 2)]
         public int ExercisePlanId { get; set; }

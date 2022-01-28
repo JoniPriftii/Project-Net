@@ -3,6 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gym.Models
 {
+
+    public class UserInformationViewModel
+    {
+        public ApplicationUser LoggedInUser { get; set; }
+        public UserDietPlan UserDiet { get; set; }
+        public UserExercisePlan UserExercise { get; set; }
+        public Product UserProduct { get; set; }
+    }
+
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

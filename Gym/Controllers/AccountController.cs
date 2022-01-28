@@ -95,6 +95,20 @@ namespace Gym.Controllers
             }
         }
 
+
+        public ActionResult UserInformation(string UserId)
+        {
+            if(UserId!=null)
+            {
+                var diet = context.UserDietPlans.Where(i => i.Id==UserId);
+                var exercise = context.UserExercisePlans.Where(i => i.Id == UserId);
+
+            }
+
+
+            return View();
+        }
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -156,7 +170,7 @@ namespace Gym.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, LastName=model.LastName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.Name, LastName=model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
