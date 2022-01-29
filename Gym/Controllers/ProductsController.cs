@@ -16,9 +16,38 @@ namespace Gym.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string value)
         {
-            return View(await db.Products.ToListAsync());
+            IQueryable<Product> products = db.Products;
+            if (!String.IsNullOrEmpty(value))
+            {
+                switch (value)
+                {
+                    case "Suplements":
+                        products = products.Where(p => p.Category.Contains(value));
+                        break;
+                    case "Clothes":
+                        products = products.Where(p => p.Category.Contains(value));
+                        break;
+                    case "low":
+                        products = products.Where(p => p.Price <= 50);
+                        break;
+                    case "medium":
+                        products = products.Where(p => p.Price > 50 && p.Price <= 150);
+                        break;
+                    case "high":
+                        products = products.Where(p => p.Price > 150);
+                        break;
+                    case "all":
+                        products = products.Where(p => p.Price > 0);
+                        break;
+                    default:
+                        products = products.Where(p => p.Name.Contains(value));
+                        break;
+                }
+
+            }
+            return View(await products.ToListAsync());
         }
 
         // GET: Products/Details/5

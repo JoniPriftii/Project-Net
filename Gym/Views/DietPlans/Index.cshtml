@@ -18,25 +18,49 @@
 
             </div>
 
-        </div>
+            <div class="row">
+                <div class="col-md-7 ">
+                    @Html.ActionLink("Gain Weight", "Index", "DietPlans", new { value = "gain" }, new { @class = "btn btn-primary" })
 
-        <div class="row" style="padding-left:80px; padding-right:80px; padding-bottom:40px; padding-top:40px">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 col-sm-4 animate-box">
+                    @Html.ActionLink("Build Muscle", "Index", "DietPlans", new { value = "build" }, new { @class = "btn btn-primary" })
 
-                    <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
-                        <h3 style="color:#F25B10">@item.Name</h3>
-                        <a href='@Url.Action("Details", "DietPlans", new {id=item.DietPlanId })'>
-                            <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer",  width="200" height="500">
-                        </a>
-                        <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
+                    @Html.ActionLink("Loose weight", "Index", "DietPlans", new { value = "loose" }, new { @class = "btn btn-primary" })
 
-                    </div>
-                    <br /><br /><br />
+                    @Html.ActionLink("All", "Index", "DietPlans", new { value = "all" }, new { @class = "btn btn-primary" })
                 </div>
+                <div class="col-md-5">
+                    @using (Html.BeginForm("Index", "DietPlans", FormMethod.Get,
+                                    new { @class = "navbar-form row" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("value", null, new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    }
+                </div>
+            </div>
 
-            }
+            <div class="row" >
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 col-sm-4 animate-box">
+
+                        <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
+                            <h3 style="color:#F25B10">@item.Name</h3>
+                            <a href='@Url.Action("Details", "DietPlans", new {id=item.DietPlanId })'>
+                                <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
+                            </a>
+                            <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
+
+                        </div>
+                        <br /><br /><br />
+                    </div>
+
+                }
+            </div>
+
         </div>
+
+        
     </div>
 </div>

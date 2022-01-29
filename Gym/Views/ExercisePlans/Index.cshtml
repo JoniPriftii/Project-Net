@@ -29,6 +29,27 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-7 ">
+                @Html.ActionLink("Less than 50$", "Index", "ExercisePlans", new { value = "low" }, new { @class = "btn btn-primary" })
+
+                @Html.ActionLink("50$ / 150$", "Index", "ExercisePlans", new { value = "medium" }, new { @class = "btn btn-primary" })
+
+                @Html.ActionLink("More than 150$", "Index", "ExercisePlans", new { value = "high" }, new { @class = "btn btn-primary" })
+
+                @Html.ActionLink("Exercises", "Index", "ExercisePlans", new { value = "all" }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-5">
+                @using (Html.BeginForm("Index", "ExercisePlans", FormMethod.Get,
+                                new { @class = "navbar-form row" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("value", null, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                }
+            </div>
+        </div>
+        <div class="row">
             @foreach (var item in Model)
             {
 
@@ -41,8 +62,8 @@
                             <a><b>@Html.DisplayFor(modelItem => item.Price)</b></a>
 
                             @*
-                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                {  }
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {  }
                             *@
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ExercisePlanId }) </b></a>
                             <a><b>   @Html.ActionLink("Delete", "Delete", new { id = item.ExercisePlanId })</b></a>

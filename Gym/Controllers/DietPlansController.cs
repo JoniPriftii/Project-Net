@@ -16,9 +16,32 @@ namespace Gym.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: DietPlans
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string value)
         {
-            return View(await db.DietPlans.ToListAsync());
+            IQueryable<DietPlan> diets = db.DietPlans;
+            if (!String.IsNullOrEmpty(value))
+            {
+                switch (value)
+                {
+                    case "gain":
+                        diets = diets.Where(d => d.Category == "Gain Weight");
+                        break;
+                    case "build":
+                        diets = diets.Where(d => d.Category == "Build Muscle");
+                        break;
+                    case "loose":
+                        diets = diets.Where(d => d.Category == "Loose Weight");
+                        break;
+                    case "all":
+                        diets = diets.Where(d => d.Category != " ");
+                        break;
+                    default:
+                        diets = diets.Where(d => d.Name.Contains(value));
+                        break;
+                }
+
+            }
+            return View(await diets.ToListAsync());
         }
 
         // GET: DietPlans/Details/5

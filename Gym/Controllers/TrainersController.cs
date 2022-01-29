@@ -16,10 +16,14 @@ namespace Gym.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Trainers
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string value)
         {
-            var trainers = db.Trainers.Include(t => t.ExercisePlan);
-            return View(await trainers.ToListAsync());
+            IQueryable<Trainer> trainer = db.Trainers;
+            if (!String.IsNullOrEmpty(value))
+            {
+                trainer = trainer.Where(t => t.FirstName.Contains(value));
+            }
+            return View(await trainer.ToListAsync());
         }
 
         // GET: Trainers/Details/5

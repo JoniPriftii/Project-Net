@@ -9,6 +9,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@*===============================FILTRIM===================================*@
+<div class="row">
+    <div class="col-md-12 ">
+        @Html.ActionLink("Clothes", "Index", "Products", new { value = "Clothes" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Suplements", "Index", "Products", new { value = "Suplements" }, new { @class = "btn btn-primary" })
+
+        @* nqs do te shtosh ndonje kategori tj...
+
+
+            @Html.ActionLink("??????", "Index", "Products", new { value = "????" }, new { @class = "btn btn-primary" })
+
+
+        *@
+        @Html.ActionLink("All", "Index", "Products", new { value = "all" }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+<br />
+<div class="row">
+    <div class="col-md-7 ">
+        @Html.ActionLink("Less than 50$", "Index", "Products", new { value = "low" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("50$ / 150$", "Index", "Products", new { value = "medium" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("More than 150$", "Index", "Products", new { value = "high" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("All Prices", "Index", "Products", new { value = "all" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-5">
+        @using (Html.BeginForm("Index", "Products", FormMethod.Get,
+                        new { @class = "navbar-form row" }))
+        {
+            <div class="form-group">
+                @Html.TextBox("value", null, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+@*============================================================================*@
+
 <table class="table">
     <tr>
         <th>
@@ -26,26 +69,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
 
 </table>

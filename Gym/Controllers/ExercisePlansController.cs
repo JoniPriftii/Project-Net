@@ -16,9 +16,32 @@ namespace Gym.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ExercisePlans
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string value)
         {
-            return View(await db.ExercisePlans.ToListAsync());
+            IQueryable<ExercisePlan> exerc = db.ExercisePlans;
+            if (!String.IsNullOrEmpty(value))
+            {
+                switch (value)
+                {
+                    case "low":
+                        exerc = exerc.Where(e => e.Price <= 50);
+                        break;
+                    case "medium":
+                        exerc = exerc.Where(e => e.Price > 50 && e.Price <= 150);
+                        break;
+                    case "high":
+                        exerc = exerc.Where(e => e.Price > 150);
+                        break;
+                    case "all":
+                        exerc = exerc.Where(e => e.Price > 0);
+                        break;
+                    default:
+                        exerc = exerc.Where(e => e.ExercisePlanName.Contains(value));
+                        break;
+                }
+
+            }
+            return View(await exerc.ToListAsync());
         }
 
         // GET: ExercisePlans/Details/5
