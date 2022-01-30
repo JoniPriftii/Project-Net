@@ -10,17 +10,50 @@ using System.Web.Mvc;
 using Gym.Models;
 using Microsoft.AspNet.Identity;
 using Gym.Models.ViewModels;
+using System.Web.Helpers;
 
 namespace Gym.Controllers
 {
     public class DietPlansController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: DietPlans
-        public async Task<ActionResult> Index()
+        [HttpPost]
+        [Route("DietPlans/Fshi/{id}")]
+        public JsonResult Fshi(int? id)
         {
-            return View(await db.DietPlans.ToListAsync());
+            DietPlan diet = db.DietPlans.Find(id);
+            db.DietPlans.Remove(diet);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+        // GET: DietPlans
+        public async Task<ActionResult> Index(string value)
+        {
+            IQueryable<DietPlan> diets = db.DietPlans;
+            if (!String.IsNullOrEmpty(value))
+            {
+                switch (value)
+                {
+                    case "gain":
+                        diets = diets.Where(d => d.Category == "Gain Weight");
+                        break;
+                    case "build":
+                        diets = diets.Where(d => d.Category == "Build Muscle");
+                        break;
+                    case "loose":
+                        diets = diets.Where(d => d.Category == "Loose Weight");
+                        break;
+                    case "all":
+                        diets = diets.Where(d => d.Category != " ");
+                        break;
+                    default:
+                        diets = diets.Where(d => d.Name.Contains(value));
+                        break;
+                }
+
+            }
+            return View(await diets.ToListAsync());
         }
 
         // GET: DietPlans/Details/5
@@ -108,12 +141,22 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "DietPlanId,Name,Category,Weight,Height,ImageName,Description,DurationInDays")] DietPlan dietPlan)
+        public async Task<ActionResult> Create([Bind(Include = "DietPlanId,Name,Category,Weight,Height,ImageName,Description,DurationInDays")] DietPlan dietPlan, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
             {
-                db.DietPlans.Add(dietPlan);
-                await db.SaveChangesAsync();
+                WebImage img = new WebImage(ImageName.InputStream);
+                img.Save(Konstante2.PathImazh2 + ImageName.FileName);
+                db.DietPlans.Add(new DietPlan
+                {
+                    Name = dietPlan.Name,
+                    Category = dietPlan.Category,
+                    Weight = dietPlan.Weight,
+                    Height=dietPlan.Height,
+                    ImageName = ImageName.FileName,
+                    DurationInDays=dietPlan.DurationInDays
+                });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

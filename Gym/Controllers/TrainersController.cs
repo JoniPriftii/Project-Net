@@ -8,18 +8,32 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gym.Models;
+using System.Web.Helpers;
 
 namespace Gym.Controllers
 {
     public class TrainersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Trainers
-        public async Task<ActionResult> Index()
+        [HttpPost]
+        [Route("Trainers/Fshi/{id}")]
+        public JsonResult Fshi(int? id)
         {
-            var trainers = db.Trainers.Include(t => t.ExercisePlan);
-            return View(await trainers.ToListAsync());
+            Trainer trainer = db.Trainers.Find(id);
+            db.Trainers.Remove(trainer);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+        // GET: Trainers
+        public async Task<ActionResult> Index(string value)
+        {
+            IQueryable<Trainer> trainer = db.Trainers;
+            if (!String.IsNullOrEmpty(value))
+            {
+                trainer = trainer.Where(t => t.FirstName.Contains(value));
+            }
+            return View(await trainer.ToListAsync());
         }
 
         // GET: Trainers/Details/5
@@ -49,16 +63,23 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer)
+        public async Task<ActionResult> Create([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
             {
-                db.Trainers.Add(trainer);
-                await db.SaveChangesAsync();
+                WebImage img = new WebImage(ImageName.InputStream);
+                img.Save(Konstante1.PathImazh1 + ImageName.FileName);
+                db.Trainers.Add(new Trainer
+                {
+                    FirstName = trainer.FirstName,
+                    LastName = trainer.LastName,
+                    ExperienceDescription = trainer.ExperienceDescription,
+                    ImageName = ImageName.FileName
+                });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ExercisePlanId = new SelectList(db.ExercisePlans, "ExercisePlanId", "ExercisePlanName", trainer.ExercisePlanId);
             return View(trainer);
         }
 

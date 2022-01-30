@@ -9,43 +9,115 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
+@*===============================FILTRIM===================================*@
+<div class="row">
+    <div class="col-md-12 ">
+        @Html.ActionLink("Clothes", "Index", "Products", new { value = "Clothes" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Suplements", "Index", "Products", new { value = "Suplements" }, new { @class = "btn btn-primary" })
+
+        @* nqs do te shtosh ndonje kategori tj...
+
+
+            @Html.ActionLink("??????", "Index", "Products", new { value = "????" }, new { @class = "btn btn-primary" })
+
+
+        *@
+        @Html.ActionLink("All", "Index", "Products", new { value = "all" }, new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+<br />
+<div class="row">
+    <div class="col-md-7 ">
+        @Html.ActionLink("Less than 50$", "Index", "Products", new { value = "low" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("50$ / 150$", "Index", "Products", new { value = "medium" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("More than 150$", "Index", "Products", new { value = "high" }, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("All Prices", "Index", "Products", new { value = "all" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-5">
+        @using (Html.BeginForm("Index", "Products", FormMethod.Get,
+                        new { @class = "navbar-form row" }))
+        {
+            <div class="form-group">
+                @Html.TextBox("value", null, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+@*============================================================================*@
+
+<div id="fh5co-trainer">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+
+
+                <h2>Products</h2>
+                <p>Working out gets better with our products.</p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px; " id="@(item.ProductId)item">
+
+                    <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:10px ">
+
+                        <h3 style="color:darkslategray;  padding-top:20px">@item.Name</h3>
+
+                        <a>
+                            <img class="img-responsive" src="../Content/Images/Product/@(item.ImageName).jpg" alt="trainer" height="500" width="500">
+                        </a>
+                        <div>
+                            <h4 style="color:darkslategrey; padding-top:20px;"> Price: $@item.Price </h4>
+
+                            @*
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+               {  }
+                            *@
+                            <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) </b></a>
+
+                            <a style="margin-left:20px;" class="fshirje-btn" id="@item.ProductId"><b>  Delete </b></a>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+@*
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+           {  }
+*@
+<p style="font:200">
+
+    @Html.ActionLink("Create New", "Create")
+
+</p>
+
+
+@section Scripts{
+    <script src="../Scripts/AJAX/FshiProdukt.js"></script>
 }
 
-</table>
+
+
+
+

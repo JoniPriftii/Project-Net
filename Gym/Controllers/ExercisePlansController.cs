@@ -8,17 +8,50 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gym.Models;
+using System.Web.Helpers;
 
 namespace Gym.Controllers
 {
     public class ExercisePlansController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: ExercisePlans
-        public async Task<ActionResult> Index()
+        [HttpPost]
+        [Route("ExercisePlans/Fshi/{id}")]
+        public JsonResult Fshi(int? id)
         {
-            return View(await db.ExercisePlans.ToListAsync());
+            ExercisePlan exercise = db.ExercisePlans.Find(id);
+            db.ExercisePlans.Remove(exercise);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+        // GET: ExercisePlans
+        public async Task<ActionResult> Index(string value)
+        {
+            IQueryable<ExercisePlan> exerc = db.ExercisePlans;
+            if (!String.IsNullOrEmpty(value))
+            {
+                switch (value)
+                {
+                    case "low":
+                        exerc = exerc.Where(e => e.Price <= 50);
+                        break;
+                    case "medium":
+                        exerc = exerc.Where(e => e.Price > 50 && e.Price <= 150);
+                        break;
+                    case "high":
+                        exerc = exerc.Where(e => e.Price > 150);
+                        break;
+                    case "all":
+                        exerc = exerc.Where(e => e.Price > 0);
+                        break;
+                    default:
+                        exerc = exerc.Where(e => e.ExercisePlanName.Contains(value));
+                        break;
+                }
+
+            }
+            return View(await exerc.ToListAsync());
         }
 
         // GET: ExercisePlans/Details/5
@@ -47,12 +80,22 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ExercisePlanId,ExercisePlanName,Description,DurationInDays,Price,Sessions,ImageName")] ExercisePlan exercisePlan)
+        public async Task<ActionResult> Create([Bind(Include = "ExercisePlanId,ExercisePlanName,Description,DurationInDays,Price,Sessions,ImageName")] ExercisePlan exercisePlan, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
             {
-                db.ExercisePlans.Add(exercisePlan);
-                await db.SaveChangesAsync();
+                WebImage img = new WebImage(ImageName.InputStream);
+                img.Save(Konstante3.PathImazh3 + ImageName.FileName);
+                db.ExercisePlans.Add(new ExercisePlan
+                {
+                    ExercisePlanName = exercisePlan.ExercisePlanName,
+                    Description = exercisePlan.Description,
+                    DurationInDays = exercisePlan.DurationInDays,
+                    Price = exercisePlan.Price,
+                    Sessions = exercisePlan.Sessions,
+                    ImageName = ImageName.FileName
+                });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
