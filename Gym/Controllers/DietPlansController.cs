@@ -130,6 +130,30 @@ namespace Gym.Controllers
             
         }
 
+        [HttpPost]
+        public ActionResult EndUserDietPlan(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var dietPlan = db.DietPlans.FirstOrDefault(i => i.DietPlanId == id);
+           
+            if (dietPlan != null)
+            {
+                var userDietPlan = db.UserDietPlans.FirstOrDefault(i => i.Id == userId && i.IsActive == true);
+               
+                userDietPlan.IsActive = false;
+                userDietPlan.EndDate = DateTime.Now;
+
+                db.SaveChanges();
+
+                return RedirectToAction("UserInformation", "Account");   
+            }
+            else
+            {
+                return View("Details", "DietPlans");
+            }
+        }
+
+
         // GET: DietPlans/Create
         public ActionResult Create()
         {

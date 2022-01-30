@@ -1,68 +1,123 @@
-﻿@model    Gym.Models.ViewModels.DietPlanViewModel
-
-@{
-    ViewBag.Title = "Details";
-}
+﻿@using Gym.Models
+@model  Gym.Models.ViewModels.DietPlanViewModel
 
 
+@*<*@
 
-<div style="padding-left: initial; padding-right: initial; padding-top:70px; padding-bottom:100px">
-    <div id=" fh5co-trainer">
+@if (Model.IsActive == true)
+{
+    using (Html.BeginForm("EndUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, FormMethod.Post))
+    {
+        <div style="padding-left: initial; padding-right: initial; padding-top:70px; padding-bottom:100px">
+            <div id=" fh5co-trainer">
 
-        <div class="container">
+                <div class="container">
 
-            <div class="row animate-box">
+                    <div class="row animate-box">
 
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371; padding-top:20px; padding-bottom:1px;">
-                    <h2>@Model.Category</h2>
-                </div>
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371; padding-top:20px; padding-bottom:1px;">
+                            <h2>@Model.Category</h2>
+                        </div>
 
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div style="padding-left:160px; padding-right:100px; ">
-
-                <div class="trainer" style=" padding-left: 100px;padding-bottom: 100px; padding-top: 50px;">
-                    <h2 style="color:#F25B10; padding-left:220px; padding-right:100px;">@Model.Name</h2>
-                    <img class="img-responsive" 
-                         src="~/Content/Images/DietPlan/@(Model.ImageName).jpg" alt="trainer" >
-                    
-                    <div style="padding-right:140px;padding-top:40px; color:#F25B10; font-size:large">
-                        @Html.DisplayNameFor(model => model.Description):@Html.DisplayFor(model => model.Description)
-
-                        <br /><br />
-
-                        @Html.DisplayNameFor(model => model.Weight): @Html.DisplayFor(model => model.Weight)
-
-                        <br /><br />
-
-                        @Html.DisplayNameFor(model => model.Height): @Html.DisplayFor(model => model.Height)
-
-                        <br /><br />
-
-                        @Html.DisplayNameFor(model => model.DurationInDays): @Html.DisplayFor(model => model.DurationInDays)
                     </div>
 
                 </div>
-                <br /><br />
-                      <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
-                          @if (Model.IsActive == true)
-                          {
-                              @Html.ActionLink("Unfollow Diet Plan", "UpdateUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
 
-                          }
-                          else
-                          {
-                              @Html.ActionLink("Follow Diet Plan", "AddUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                <div class="row">
 
-                          }
-                      </div>
+                    <div style="padding-left:160px; padding-right:100px; ">
+
+                        <div class="trainer" style=" padding-left: 100px;padding-bottom: 100px; padding-top: 50px;">
+                            <h2 style="color:#F25B10; padding-left:220px; padding-right:100px;">@Model.Name</h2>
+                            <img class="img-responsive"
+                                 src="~/Content/Images/DietPlan/@(Model.ImageName).jpg" alt="trainer">
+
+                            <div style="padding-right:140px;padding-top:40px; color:#F25B10; font-size:large">
+                                @Html.DisplayNameFor(model => model.Description):@Html.DisplayFor(model => model.Description)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.Weight): @Html.DisplayFor(model => model.Weight)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.Height): @Html.DisplayFor(model => model.Height)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.DurationInDays): @Html.DisplayFor(model => model.DurationInDays)
+                            </div>
+
+
+                        </div>
+                        <br /><br />
+                        <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
+                            <input type="submit" value="Unfollow Diet Plan" class = "btn btn-primary btn-outline btn-sm" />
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-
-
         </div>
-    </div>
-</div>
+    }
+}
+else
+{
+    @*@Html.ActionLink("Follow Diet Plan", "AddUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })*@
+    using (Html.BeginForm("AddUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, FormMethod.Post))
+    {
+        <div style="padding-left: initial; padding-right: initial; padding-top:70px; padding-bottom:100px">
+            <div id=" fh5co-trainer">
+
+                <div class="container">
+
+                    <div class="row animate-box">
+
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371; padding-top:20px; padding-bottom:1px;">
+                            <h2>@Model.Category</h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div style="padding-left:160px; padding-right:100px; ">
+
+                        <div class="trainer" style=" padding-left: 100px;padding-bottom: 100px; padding-top: 50px;">
+                            <h2 style="color:#F25B10; padding-left:220px; padding-right:100px;">@Model.Name</h2>
+                            <img class="img-responsive"
+                                 src="~/Content/Images/DietPlan/@(Model.ImageName).jpg" alt="trainer">
+
+                            <div style="padding-right:140px;padding-top:40px; color:#F25B10; font-size:large">
+                                @Html.DisplayNameFor(model => model.Description):@Html.DisplayFor(model => model.Description)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.Weight): @Html.DisplayFor(model => model.Weight)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.Height): @Html.DisplayFor(model => model.Height)
+
+                                <br /><br />
+
+                                @Html.DisplayNameFor(model => model.DurationInDays): @Html.DisplayFor(model => model.DurationInDays)
+                            </div>
+
+
+                        </div>
+                        <br /><br />
+                              <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
+                                  <input type="submit" value="Follow Diet Plan" class="btn btn-primary btn-outline btn-sm" />
+                              </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+}
