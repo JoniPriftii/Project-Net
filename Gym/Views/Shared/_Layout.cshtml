@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - GYM </title>
+    <title>@ViewBag.Title - GymForce</title>
     @Styles.Render("~/Content/css")
 
 
@@ -62,21 +62,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div id="fh5co-logo"><a href="index.html">@Html.ActionLink("GYM", "Index", "Home", new { area = "" })<span>.</span></a></div>
+                        <div id="fh5co-logo"><a href="index.html">@Html.ActionLink("GymForce", "Index", "Home", new { area = "" })<span>.</span></a></div>
                     </div>
                     <div class="col-sm-10 text-center menu-1">
                         <ul>
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li class="has-dropdown">
-                                <a href="blog.html">Blog</a>
+                                <a href="@Url.Action("Index", "Home")">GymForce</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">eCommerce</a></li>
-                                    <li><a href="#">Branding</a></li>
-                                    <li><a href="#">API</a></li>
+                                    <li><a href="@Url.Action("Index", "Trainers")">Trainers</a></li>
+                                    <li><a href="@Url.Action("Index" , "Products")">Products</a></li>
+                                    <li><a href="@Url.Action("Index" , "DietPlans")">DietPlans</a></li>
+                                    <li><a href="@Url.Action("Index" , "ExercisePlans")">Training</a></li>
                                 </ul>
                             </li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             @Html.Partial("_LoginPartial")
                         </ul>
@@ -94,7 +93,7 @@
                 <div class="col-md-4 fh5co-widget">
                     <h3>A Little About Stamina.</h3>
                     <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-                    <p><a class="btn btn-primary" href="#">Become A Member</a></p>
+                    <p><a class="btn btn-primary" href="@Url.Action("Login", "Account")">Become A Member</a></p>
                 </div>
                 <div class="col-md-8">
                     <h3>Classes</h3>
@@ -134,7 +133,7 @@
                 <div class="col-md-12 text-center">
                     <p>
                         <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-                        <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+
                     </p>
                     <p>
                         <ul class="fh5co-social-icons">
