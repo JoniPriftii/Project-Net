@@ -13,7 +13,7 @@
             <div class="row animate-box">
 
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371;  padding-top:20px; ">
-                    <h2>Click diet image for more details</h2>
+                    <h2>Diet Plans</h2>
                 </div>
 
             </div>
@@ -28,11 +28,13 @@
                     <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
                         <h3 style="color:#F25B10">@item.Name</h3>
                         <a href='@Url.Action("Details", "DietPlans", new {id=item.DietPlanId })'>
-                            <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer",  width="200" height="500">
+                            <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
                         </a>
                         <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
-
-                    </div>
+                        <p style="font-size:larger;  padding-top:20px ;padding-left:60px; ">
+                            @Html.ActionLink("Details", "Details", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                        </p>                                           
+                            </div>
                     <br /><br /><br />
                 </div>
 

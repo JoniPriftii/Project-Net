@@ -1,17 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Gym.Models.ViewModels;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Gym.Models
 {
-
-    public class UserInformationViewModel
-    {
-        public ApplicationUser LoggedInUser { get; set; }
-        public UserDietPlan UserDiet { get; set; }
-        public UserExercisePlan UserExercise { get; set; }
-        public Product UserProduct { get; set; }
-    }
-
 
     public class ExternalLoginConfirmationViewModel
     {

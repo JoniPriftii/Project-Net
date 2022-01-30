@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gym.Models;
+using Microsoft.AspNet.Identity;
+using Gym.Models.ViewModels;
 
 namespace Gym.Controllers
 {
@@ -22,18 +24,77 @@ namespace Gym.Controllers
         }
 
         // GET: DietPlans/Details/5
-        public async Task<ActionResult> Details(int? id)
+        //public async Task<ActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    DietPlan dietPlan = await db.DietPlans.FindAsync(id);
+        //    if (dietPlan == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(dietPlan);
+        //}
+
+
+        [HttpGet]
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            var dietPlan = db.DietPlans.FirstOrDefault(i=>i.DietPlanId == id);
+            var dietPlanModel = new DietPlanViewModel();
+            if (dietPlan != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                dietPlanModel.Name = dietPlan.Name;
+                dietPlanModel.DietPlanId = dietPlan.DietPlanId;
+                dietPlanModel.Category = dietPlan.Category;
+                dietPlanModel.Description = dietPlan.Description;
+                dietPlanModel.ImageName = dietPlan.ImageName;
+                dietPlanModel.Height = dietPlan.Height;
+                dietPlanModel.Weight = dietPlan.Weight;
+                dietPlanModel.DurationInDays = dietPlan.DurationInDays;
+
+                var userId = User.Identity.GetUserId();
+
+                var userDietPlan = db.UserDietPlans.FirstOrDefault(i => i.DietPlanId == id && i.IsActive == true && i.Id == userId);
+                if (userDietPlan != null)
+                {
+                    dietPlanModel.IsActive = true;
+                }
+                else
+                {
+                    dietPlanModel.IsActive = false;
+                }
             }
-            DietPlan dietPlan = await db.DietPlans.FindAsync(id);
-            if (dietPlan == null)
+
+            return View(dietPlanModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddUserDietPlan(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var dietPlan = db.DietPlans.FirstOrDefault(i => i.DietPlanId == id);
+
+            if(dietPlan != null)
             {
-                return HttpNotFound();
+                var userDietPlans = db.UserDietPlans.Where(i => i.Id == userId && i.IsActive != false);
+                foreach (var userDietPlan in userDietPlans)
+                {
+                    userDietPlan.IsActive = false;
+                    userDietPlan.EndDate = DateTime.Now;
+                }
+                db.UserDietPlans.Add(new UserDietPlan { DietPlanId = id, Id = userId, StartDate = DateTime.Now, IsActive = true });
+                db.SaveChanges();
+                return RedirectToAction("UserInformation", "Account");
             }
-            return View(dietPlan);
+            else
+            {
+                return View("");
+            }
+                
+            
         }
 
         // GET: DietPlans/Create

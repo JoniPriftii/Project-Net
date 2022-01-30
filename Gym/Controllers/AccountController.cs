@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gym.Models;
+using System.Net;
+using Gym.Models.ViewModels;
 
 namespace Gym.Controllers
 {
@@ -79,11 +81,13 @@ namespace Gym.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+            
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("UserInformation");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -95,18 +99,62 @@ namespace Gym.Controllers
             }
         }
 
+       
 
-        public ActionResult UserInformation(string UserId)
+
+
+
+        [HttpGet]
+        public ActionResult UserInformation()
         {
-            if(UserId!=null)
+            var userId = User.Identity.GetUserId();
+            var user = context.Users.FirstOrDefault(i => i.Id == userId);
+
+            var diets = (from userDietPlan in context.UserDietPlans
+                        join dietPlan in context.DietPlans 
+                        on userDietPlan.DietPlanId equals dietPlan.DietPlanId
+                        where userDietPlan.Id == userId
+                        select new UserDietPlanViewModel
+                        {
+                            Name = dietPlan.Name,
+                            Category = dietPlan.Category,
+                            Description = dietPlan.Description,
+                            ImageName = dietPlan.ImageName,
+                            DurationInDays = dietPlan.DurationInDays,
+                            Weight = dietPlan.Weight,
+                            Height = dietPlan.Height,
+                            StartDate = userDietPlan.StartDate,
+                            EndDate = userDietPlan.EndDate,
+                            IsActive = userDietPlan.IsActive,
+                        }
+                        ).ToList();
+
+            var exercises = (from userExPlan in context.UserExercisePlans
+                            join exercisePlan in context.ExercisePlans 
+                            on userExPlan.ExercisePlanId equals exercisePlan.ExercisePlanId
+                            where userExPlan.Id == userId
+                            select new ExercisePlanViewModel
+                            {
+                                ExercisePlanName = exercisePlan.ExercisePlanName,
+                                Description = exercisePlan.Description,
+                                Sessions = exercisePlan.Sessions,
+                                DurationInDays = exercisePlan.DurationInDays,
+                                Price = exercisePlan.Price,
+                                ImageName = exercisePlan.ImageName,
+                                StartDate = userExPlan.StartDate,
+                                EndDate = userExPlan.EndDate,
+                                IsActive = userExPlan.IsActive,
+                            }
+                        ).ToList();
+
+            UserInformationViewModel userInformation = new UserInformationViewModel()
             {
-                var diet = context.UserDietPlans.Where(i => i.Id==UserId);
-                var exercise = context.UserExercisePlans.Where(i => i.Id == UserId);
-
-            }
-
-
-            return View();
+                User = user,
+                UserDiets = diets,
+                UserExercises = exercises,
+            };
+            return View("UserInformation", userInformation);
+            
         }
 
         //

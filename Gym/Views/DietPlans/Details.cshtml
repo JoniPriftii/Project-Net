@@ -1,4 +1,4 @@
-﻿@model Gym.Models.DietPlan
+﻿@model    Gym.Models.ViewModels.DietPlanViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -45,17 +45,24 @@
 
                         @Html.DisplayNameFor(model => model.DurationInDays): @Html.DisplayFor(model => model.DurationInDays)
                     </div>
+
                 </div>
                 <br /><br />
-                <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
-                    @Html.ActionLink("Follow Diet Plan", "Create", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
-                </div>
+                      <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
+                          @if (Model.IsActive == true)
+                          {
+                              @Html.ActionLink("Unfollow Diet Plan", "UpdateUserDietPlan", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+
+                          }
+                          else
+                          {
+                              @Html.ActionLink("Follow Diet Plan", "AddUserDietPlan", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+
+                          }
+                      </div>
             </div>
 
 
         </div>
     </div>
 </div>
-
-
-<dt>

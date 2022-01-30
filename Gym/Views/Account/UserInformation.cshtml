@@ -1,0 +1,188 @@
+﻿@model Gym.Models.ViewModels.UserInformationViewModel
+
+
+<div style="padding-left: initial; padding-right: initial; padding-top:100px; padding-bottom:30px">
+    <div id=" fh5co-trainer">
+
+        <div class="container">
+
+            <div class="row animate-box">
+
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371;  padding-top:20px; ">
+                    <h3>Welcome @Model.User.FirstName,</h3>
+                    <h3>Below you will find informations about your Diet Plans, Exercise Plans and Products </h3>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row" style="padding-left:80px;  padding-bottom:40px; padding-top:40px">
+
+            <h2 style="padding-left:70px; padding-top:20px"> Your Exercise Plans</h2>
+            @foreach (var item in Model.UserExercises)
+            {
+                <div class="col-md-4 col-sm-4 animate-box">
+
+                    <div class="trainer" style=" padding-bottom:30px; padding-top:30px; padding-left:10px; padding-right:10px">
+
+                        <h3 style="color:#F25B10; padding-left:70px; padding-top:20px">@item.ExercisePlanName</h3>
+                        <p style="padding-left:40px; ; padding-bottom:10px; padding-top:20px">
+                            <img class="img-responsive" src="~/Content/Images/ExercisePlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
+
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:10px; ">
+                            <b>@Html.DisplayNameFor(model => item.Description): </b>
+                            @item.Description
+                        </p>
+
+                        <p style="font-size:medium;  padding-left:50px; ">
+                            <b>@Html.DisplayNameFor(model => item.Sessions): </b>
+                            @item.Sessions
+                        </p>
+
+                        <p style="font-size:medium;  padding-left:50px; ">
+                            <b>@Html.DisplayNameFor(model => item.Price): </b>
+                            @item.Price
+                        </p>
+
+                        <p style="font-size:medium;   ;padding-left:50px; ">
+                            <b> @Html.DisplayNameFor(model => item.StartDate): </b>
+                            @item.StartDate
+                        </p>
+
+                        @if (@item.EndDate != null)
+                        {
+                            <p style="font-size:medium; padding-left:50px; ">
+                                <b> @Html.DisplayNameFor(model => item.EndDate): </b>
+                                @item.EndDate
+                            </p>
+                        }
+                        else
+                        {
+                            <p style="font-size:medium; padding-left:50px; ">
+                                <b> @Html.DisplayNameFor(model => item.EndDate): </b>
+                                ...
+                            </p>
+                        }
+
+                        @if (item.IsActive == true)
+                        {
+                            <p style="font-size:medium; padding-left:50px; ">
+                                <b> @Html.DisplayNameFor(model => item.IsActive): </b>
+                                Active
+                            </p>
+                        }
+                        else
+                        {
+                            <p style="font-size:medium;padding-left:50px; ">
+                                <b> @Html.DisplayNameFor(model => item.IsActive): </b>
+                                Inactive
+                            </p>
+                        }
+
+
+                    </div>
+                    <br /><br /><br />
+                </div>
+
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+<div style="padding-left: initial;   padding-top:30px; padding-bottom:40px">
+    <div id=" fh5co-trainer">
+
+        <div class="container">
+
+            <div class="row animate-box">
+
+            </div>
+
+        </div>
+
+        <div class="row" style="padding-left:80px;  padding-bottom:40px; padding-top:40px">
+
+
+            <h2 style="padding-left:70px; padding-top:20px"> Your Diet Plans</h2>
+
+            @foreach (var item in Model.UserDiets)
+            {
+                <div class="col-md-4 col-sm-4 animate-box">
+
+                    <div class="trainer" style="padding-bottom:30px; padding-top:30px; padding-left:10px; padding-right:10px">
+
+                        <h3 style="color:#F25B10; padding-left:40px; padding-top:20px">@item.Name</h3>
+
+                        <p style="padding-left:40px; ; padding-bottom:10px; padding-top:20px">
+                            <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                            <b>@Html.DisplayNameFor(model => item.Category): </b>
+                            @item.Category
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                            <b> @Html.DisplayNameFor(model => item.Description):</b>
+                            @item.Description
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                            <b> @Html.DisplayNameFor(model => item.Height): </b>
+                            @item.Height
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                            <b> @Html.DisplayNameFor(model => item.Weight): </b>
+                            @item.Weight
+                        </p>
+
+                        <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                            <b>@Html.DisplayNameFor(model => item.StartDate): </b>
+                            @item.StartDate
+                        </p>
+
+                        @if (@item.EndDate != null)
+                        {
+                            <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.EndDate): </b>
+                                @item.EndDate
+                            </p>
+                        }
+                        else
+                        {
+                            <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.EndDate): </b>
+                                ...
+                            </p>
+                        }
+
+                        @if (item.IsActive == true)
+                        {
+                            <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.IsActive): </b>
+                                Active
+                            </p>
+                        }
+                        else
+                        {
+                            <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.IsActive): </b>
+                                Inactive
+                            </p>
+                        }
+
+                    </div>
+                    <br /><br /><br />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
