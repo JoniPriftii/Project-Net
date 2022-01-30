@@ -4,55 +4,19 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Trainer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ExercisePlan.ExercisePlanName)
-        </dt>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-responsive" src="~/Content/Images/Trainer/@(Model.ImageName).jpg" alt="trainer" style="margin:0 auto" height="250px" width="150px">
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)<br />
+            @Html.DisplayFor(model => model.ExperienceDescription)<br />
 
-        <dd>
-            @Html.DisplayFor(model => model.ExercisePlan.ExercisePlanName)
-        </dd>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.TrainerId }) |
+            @Html.ActionLink("Back to List", "Index")
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExperienceDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExperienceDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainerId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
