@@ -68,7 +68,7 @@
             @foreach (var item in Model)
             {
 
-                <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px; ">
+                <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px; " id="@(item.ProductId)item">
 
                     <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:10px ">
 
@@ -81,17 +81,13 @@
                             <h4 style="color:darkslategrey; padding-top:20px;"> Price: $@item.Price </h4>
 
                             @*
-                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                       {  }
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+               {  }
                             *@
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) </b></a>
 
-                            <a><b>   @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })</b></a>
-                            @*<div class="foto">
-                                    <img class="fshirje-btn" id="@item.ProductId" width="10" height="10"
-                                         src="../Content/Images/Product/bin.png"/>
-                                </div>
-                            *@
+                            <a style="margin-left:20px;" class="fshirje-btn" id="@item.ProductId"><b>  Delete </b></a>
+
 
 
                         </div>

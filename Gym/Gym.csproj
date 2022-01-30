@@ -293,6 +293,9 @@
     <Content Include="images\yoga-carpet.svg" />
     <Content Include="images\yoga1.jpg" />
     <Content Include="images\yoga2.jpg" />
+    <Content Include="Scripts\AJAX\DeleteDiet.js" />
+    <Content Include="Scripts\AJAX\DeleteExercise.js" />
+    <Content Include="Scripts\AJAX\DeleteTrainer.js" />
     <Content Include="Scripts\AJAX\FshiProdukt.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

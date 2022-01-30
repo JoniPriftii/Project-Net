@@ -15,7 +15,16 @@ namespace Gym.Controllers
     public class TrainersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        [HttpPost]
+        [Route("Trainers/Fshi/{id}")]
+        public JsonResult Fshi(int? id)
+        {
+            Trainer trainer = db.Trainers.Find(id);
+            db.Trainers.Remove(trainer);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
 
+        }
         // GET: Trainers
         public async Task<ActionResult> Index(string value)
         {

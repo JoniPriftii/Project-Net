@@ -1,16 +1,16 @@
 ﻿$(function () {
-    $("#fh5co-trainer .fshirje-btn").click(function () {
+    $(".row .fshirje-btn").click(function () {
         if (confirm("Jeni te sigurt qe doni te fshini produktin?")) {
             var element = $(this);
             var del_id = element.attr("id");
             var info = "id=" + del_id;
             $.ajax({
                 type: "POST",
-                url: "/Products/Fshi",
+                url: "/DietPlans/Fshi",
                 data: info,
                 success: function (data) {
                     if (data) {
-                        $('#' + del_id + "item").fadeOut();
+                        $("#" + del_id + "item").fadeOut();
                     }
                     else {
                         alert('Rekordi nuk mund te fshihet.');

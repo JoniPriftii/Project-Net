@@ -40,10 +40,10 @@
                 </div>
             </div>
 
-            <div class="row" >
+            <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-4 col-sm-4 animate-box">
+                    <div class="col-md-4 col-sm-4 animate-box" id="@(item.DietPlanId)item">
 
                         <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
                             <h3 style="color:#F25B10">@item.Name</h3>
@@ -51,6 +51,7 @@
                                 <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
                             </a>
                             <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
+                            <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.DietPlanId"><b>  Delete </b></a>
 
                         </div>
                         <br /><br /><br />
@@ -61,6 +62,10 @@
 
         </div>
 
-        
+
     </div>
 </div>
+
+@section Scripts{
+    <script src="../Scripts/AJAX/DeleteDiet.js"></script>
+}

@@ -6,11 +6,11 @@
             var info = "id=" + del_id;
             $.ajax({
                 type: "POST",
-                url: "/Products/Fshi",
+                url: "/ExercisePlans/Fshi",
                 data: info,
                 success: function (data) {
                     if (data) {
-                        $('#' + del_id + "item").fadeOut();
+                        $("#" + del_id + "item").fadeOut();
                     }
                     else {
                         alert('Rekordi nuk mund te fshihet.');

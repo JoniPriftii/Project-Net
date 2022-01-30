@@ -54,7 +54,7 @@
             {
 
 
-                <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;">
+                <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;" id="@(item.ExercisePlanId)item">
                     <div class="trainer">
                         <a href="#"><img class="img-responsive" src="../Content/Images/ExercisePlan/@(item.ImageName).jpg" alt="trainer"></a>
                         <div class="title">
@@ -62,11 +62,11 @@
                             <a><b>@Html.DisplayFor(modelItem => item.Price)</b></a>
 
                             @*
-                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                            {  }
+                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {  }
                             *@
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ExercisePlanId }) </b></a>
-                            <a><b>   @Html.ActionLink("Delete", "Delete", new { id = item.ExercisePlanId })</b></a>
+                            <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.ExercisePlanId"><b>  Delete </b></a>
 
                         </div>
                         <div class="desc text-center">
@@ -85,3 +85,8 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts{
+    <script src="../Scripts/AJAX/DeleteExercise.js"></script>
+}

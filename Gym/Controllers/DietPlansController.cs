@@ -15,7 +15,16 @@ namespace Gym.Controllers
     public class DietPlansController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        [HttpPost]
+        [Route("DietPlans/Fshi/{id}")]
+        public JsonResult Fshi(int? id)
+        {
+            DietPlan diet = db.DietPlans.Find(id);
+            db.DietPlans.Remove(diet);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
 
+        }
         // GET: DietPlans
         public async Task<ActionResult> Index(string value)
         {
