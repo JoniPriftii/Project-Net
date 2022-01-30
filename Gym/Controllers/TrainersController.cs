@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gym.Models;
+using System.Web.Helpers;
 
 namespace Gym.Controllers
 {
@@ -53,16 +54,23 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer)
+        public async Task<ActionResult> Create([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
             {
-                db.Trainers.Add(trainer);
-                await db.SaveChangesAsync();
+                WebImage img = new WebImage(ImageName.InputStream);
+                img.Save(Konstante1.PathImazh1 + ImageName.FileName);
+                db.Trainers.Add(new Trainer
+                {
+                    FirstName = trainer.FirstName,
+                    LastName = trainer.LastName,
+                    ExperienceDescription = trainer.ExperienceDescription,
+                    ImageName = ImageName.FileName
+                });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ExercisePlanId = new SelectList(db.ExercisePlans, "ExercisePlanId", "ExercisePlanName", trainer.ExercisePlanId);
             return View(trainer);
         }
 

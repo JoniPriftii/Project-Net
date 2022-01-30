@@ -182,6 +182,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Konstante.cs" />
+    <Compile Include="Konstante1.cs" />
+    <Compile Include="Konstante2.cs" />
+    <Compile Include="Konstante3.cs" />
     <Compile Include="Migrations\202201282152147_Init.cs" />
     <Compile Include="Migrations\202201282152147_Init.designer.cs">
       <DependentUpon>202201282152147_Init.cs</DependentUpon>
@@ -239,7 +243,7 @@
     <Content Include="Content\Images\Product Images\gymhoodie.jpg" />
     <Content Include="Content\Images\Product Images\gymprotein.jpg" />
     <Content Include="Content\Images\Product Images\gymshirt.jpg" />
-    <Content Include="Content\Images\Product\gymgloves.jpg" />
+    <Content Include="Content\Images\Product\bin.png" />
     <Content Include="Content\Images\Product\gymhoodie.jpg" />
     <Content Include="Content\Images\Product\gymprotein.jpg" />
     <Content Include="Content\Images\Product\gymshirt.jpg" />
@@ -289,6 +293,7 @@
     <Content Include="images\yoga-carpet.svg" />
     <Content Include="images\yoga1.jpg" />
     <Content Include="images\yoga2.jpg" />
+    <Content Include="Scripts\AJAX\FshiProdukt.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="sass\bootstrap.scss" />
@@ -441,7 +446,6 @@
     <Content Include="Views\Trainers\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\DietPlans\Create.cshtml" />
