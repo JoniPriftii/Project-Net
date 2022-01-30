@@ -124,7 +124,7 @@ namespace Gym.Controllers
             }
             else
             {
-                return View("");
+                return View("Index", "DietPlans");
             }
                 
             

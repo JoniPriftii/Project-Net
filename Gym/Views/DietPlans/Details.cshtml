@@ -51,12 +51,12 @@
                       <div style="color:#F25B10; padding-left:420px; padding-right:100px;">
                           @if (Model.IsActive == true)
                           {
-                              @Html.ActionLink("Unfollow Diet Plan", "UpdateUserDietPlan", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                              @Html.ActionLink("Unfollow Diet Plan", "UpdateUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
 
                           }
                           else
                           {
-                              @Html.ActionLink("Follow Diet Plan", "AddUserDietPlan", "", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                              @Html.ActionLink("Follow Diet Plan", "AddUserDietPlan", "DietPlans", new { id = Model.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
 
                           }
                       </div>

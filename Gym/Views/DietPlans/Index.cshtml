@@ -13,7 +13,7 @@
             <div class="row animate-box">
 
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="background-color:#FEB371;  padding-top:20px; ">
-                    <h2>Click diet image for more details</h2>
+                    <h2>Diet Plans</h2>
                 </div>
 
             </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" >
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4 col-sm-4 animate-box" id="@(item.DietPlanId)item">
@@ -51,11 +51,13 @@
                                 <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
                             </a>
                             <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
-                            <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.DietPlanId"><b>  Delete </b></a>
+                            <p style="font-size:larger;  padding-top:20px ;padding-left:60px; ">
+                                @Html.ActionLink("Details", "Details", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                            </p>
 
                         </div>
-                        <br /><br /><br />
-                    </div>
+                    <br /><br /><br />
+                </div>
 
                 }
             </div>
