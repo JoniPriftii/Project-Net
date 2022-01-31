@@ -1,4 +1,5 @@
-﻿@model Gym.Models.ExercisePlan
+﻿@using Gym.Models
+@model  Gym.Models.ViewModels.UserExercisePlanViewModel
 
 @{
     @*kod pa rendesi*@
@@ -13,48 +14,112 @@
     //=======================
 }
 
-<div class="container-fluid">
-    <div class="row animate-box">
-        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-            <h2>@Html.DisplayFor(model => model.ExercisePlanName)</h2>
-            <p>Each detail of this plan is displayed below. you can watch carefully its information and be surprised about it's value'</p>
+@if (Model.IsActive == true)
+{
+    using (Html.BeginForm("EndUserExercisePlan", "ExercisePlans", new { id = Model.ExercisePlanId }, FormMethod.Post))
+    {
+
+        <div class="container-fluid">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>@Html.DisplayFor(model => model.ExercisePlanName)</h2>
+                    <p>Each detail of this plan is displayed below. you can watch carefully its information and be surprised about it's value'</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <img style="width:50%; margin:-10% auto 0;" src="~/Content/Images/ExercisePlan/@(Model.ImageName).jpg" alt="" class="img-responsive" />
+                </div>
+                <div class="col-lg-5">
+                    <div>
+                        @Html.DisplayFor(model => model.Description)
+                    </div>
+                    <div>
+                        <b style="color: #F85A16">@Html.DisplayFor(model => model.Price)</b>
+                    </div>
+                    <div>
+                        Duration of plan is @(months) @(correctSyntax).
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Sessions) times a week by exellent @Html.ActionLink("Coachers", "Index", "Trainers")
+                    </div>
+                    <br />
+                    <br />
+                    <button class="btn btn-primary" type="submit"><b>End Program</b></button>
+                    <button class="btn ">@Html.ActionLink("Back to List", "Index")</button>
+
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <img style="width:50%; margin:-10% auto 0;" src="~/Content/Images/ExercisePlan/@(Model.ImageName).jpg" alt="" class="img-responsive" />
+
+
+        //Kujtes
+
+        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ExercisePlanId }) |
+
+            </p>
+        }
+    }
+}
+else
+{
+    using (Html.BeginForm("AddUserExercisePlan", "ExercisePlans", new { id = Model.ExercisePlanId }, FormMethod.Post))
+    {
+
+        <div class="container-fluid">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>@Html.DisplayFor(model => model.ExercisePlanName)</h2>
+                    <p>Each detail of this plan is displayed below. you can watch carefully its information and be surprised about it's value'</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <img style="width:50%; margin:-10% auto 0;" src="~/Content/Images/ExercisePlan/@(Model.ImageName).jpg" alt="" class="img-responsive" />
+                </div>
+                <div class="col-lg-5">
+                    <div>
+                        @Html.DisplayFor(model => model.Description)
+                    </div>
+                    <div>
+                        <b style="color: #F85A16">@Html.DisplayFor(model => model.Price)</b>
+                    </div>
+                    <div>
+                        Duration of plan is @(months) @(correctSyntax).
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Sessions) times a week by exellent @Html.ActionLink("Coachers", "Index", "Trainers")
+                    </div>
+                    <br />
+                    <br />
+                    <button class="btn btn-primary" type="submit"><b>Buy</b></button>
+                    <button class="btn ">@Html.ActionLink("Back to List", "Index")</button>
+
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5">
-            <div>
-                @Html.DisplayFor(model => model.Description)
-            </div>
-            <div>
-                <b style="color: #F85A16">@Html.DisplayFor(model => model.Price)</b>
-            </div>
-            <div>
-                Duration of plan is @(months) @(correctSyntax).
-            </div>
-            <div>
-                @Html.DisplayFor(model => model.Sessions) times a week by exellent @Html.ActionLink("Coachers", "Index", "Trainers")
-            </div>
-            <br />
-            <br />
-            <button class="btn btn-primary"><b>Buy</b></button>
-            <button class="btn ">@Html.ActionLink("Back to List", "Index")</button>
 
-        </div>
-    </div>
-</div>
 
-</div>
-@*
-    //Kujtes
 
-    @if(Request.IsAuthenticated && User.IsInRole("Admin")) { }
+        //Kujtes
 
-*@
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ExercisePlanId }) |
+        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
 
-</p>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ExercisePlanId }) |
+
+            </p>
+        }
+
+    }
+}

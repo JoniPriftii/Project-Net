@@ -133,7 +133,7 @@ namespace Gym.Controllers
                             join exercisePlan in context.ExercisePlans 
                             on userExPlan.ExercisePlanId equals exercisePlan.ExercisePlanId
                             where userExPlan.Id == userId
-                            select new ExercisePlanViewModel
+                            select new UserExercisePlanViewModel
                             {
                                 ExercisePlanName = exercisePlan.ExercisePlanName,
                                 Description = exercisePlan.Description,
