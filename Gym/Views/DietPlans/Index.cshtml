@@ -48,7 +48,14 @@
                         <div class="trainer" style="padding-left:50px; padding-bottom:30px; padding-top:40px ">
                             <h3 style="color:#F25B10">@item.Name</h3>
                             <a href='@Url.Action("Details", "DietPlans", new {id=item.DietPlanId })'>
-                                <img class="img-responsive" src="~/Content/Images/DietPlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
+                                @if (item.ImageName.Contains(".jpg"))
+                                {
+                                    <img class="img-responsive" src="../Content/Images/DietPlan/@(item.ImageName)" alt="" width="200" height="500">
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="../Content/Images/DietPlan/@(item.ImageName).jpg" alt=""  width="200" height="500"/>
+                                }                                
                             </a>
                             <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
                             <p style="font-size:larger;  padding-top:20px ;padding-left:60px; ">

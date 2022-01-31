@@ -36,7 +36,14 @@
                     <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;" id="@(item.ExercisePlanId)item">
                         <div class="trainer">
                             <a href="#">
-                                <img class="img-responsive" src="../Content/Images/Trainer/@(item.ImageName).jpg" alt="trainer">
+                                @if (item.ImageName.Contains(".jpg"))
+                                {
+                                    <img class="img-responsive" src="../Content/Images/Trainer/@(item.ImageName)" alt="" >
+                                }
+                                else
+                                {
+                                    <img class="img-responsive" src="../Content/Images/Trainer/@(item.ImageName).jpg" alt="" >
+                                }                                
                             </a>
                             <div class="title">
                                 <h3>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) </h3>

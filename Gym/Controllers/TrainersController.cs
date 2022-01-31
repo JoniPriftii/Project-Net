@@ -52,6 +52,7 @@ namespace Gym.Controllers
         }
 
         // GET: Trainers/Create
+        [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             ViewBag.ExercisePlanId = new SelectList(db.ExercisePlans, "ExercisePlanId", "ExercisePlanName");
@@ -63,6 +64,7 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
@@ -84,6 +86,7 @@ namespace Gym.Controllers
         }
 
         // GET: Trainers/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,6 +107,7 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "TrainerId,FirstName,LastName,ExperienceDescription,ImageName,ExercisePlanId")] Trainer trainer)
         {
             if (ModelState.IsValid)
@@ -116,31 +120,7 @@ namespace Gym.Controllers
             return View(trainer);
         }
 
-        // GET: Trainers/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Trainer trainer = await db.Trainers.FindAsync(id);
-            if (trainer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(trainer);
-        }
-
-        // POST: Trainers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Trainer trainer = await db.Trainers.FindAsync(id);
-            db.Trainers.Remove(trainer);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        
 
         protected override void Dispose(bool disposing)
         {

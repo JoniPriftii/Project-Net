@@ -155,6 +155,7 @@ namespace Gym.Controllers
 
 
         // GET: DietPlans/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -165,6 +166,7 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create([Bind(Include = "DietPlanId,Name,Category,Weight,Height,ImageName,Description,DurationInDays")] DietPlan dietPlan, HttpPostedFileBase ImageName)
         {
             if (ModelState.IsValid)
@@ -188,6 +190,7 @@ namespace Gym.Controllers
         }
 
         // GET: DietPlans/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -207,6 +210,7 @@ namespace Gym.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "DietPlanId,Name,Category,Weight,Height,ImageName,Description,DurationInDays")] DietPlan dietPlan)
         {
             if (ModelState.IsValid)
@@ -218,32 +222,8 @@ namespace Gym.Controllers
             return View(dietPlan);
         }
 
-        // GET: DietPlans/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DietPlan dietPlan = await db.DietPlans.FindAsync(id);
-            if (dietPlan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dietPlan);
-        }
 
-        // POST: DietPlans/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            DietPlan dietPlan = await db.DietPlans.FindAsync(id);
-            db.DietPlans.Remove(dietPlan);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
+        [Authorize(Roles = "Admin")]
         protected override void Dispose(bool disposing)
         {
             if (disposing)

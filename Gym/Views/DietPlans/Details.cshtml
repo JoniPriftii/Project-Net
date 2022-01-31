@@ -29,8 +29,15 @@
 
                         <div class="trainer" style=" padding-left: 100px;padding-bottom: 100px; padding-top: 50px;">
                             <h2 style="color:#F25B10; padding-left:220px; padding-right:100px;">@Model.Name</h2>
-                            <img class="img-responsive"
-                                 src="~/Content/Images/DietPlan/@(Model.ImageName).jpg" alt="trainer">
+                            @if (Model.ImageName.Contains(".jpg"))
+                            {
+                                <img class="img-responsive" src="~/Content/Images/DietPlan/@(Model.ImageName)" alt="" >
+                            }
+                            else
+                            {
+                                <img class="img-responsive" src="~/Content/Images/DietPlan/@(Model.ImageName).jpg" alt="" >
+                            }
+                            
 
                             <div style="padding-right:140px;padding-top:40px; color:#F25B10; font-size:large">
                                 @Html.DisplayNameFor(model => model.Description):@Html.DisplayFor(model => model.Description)
