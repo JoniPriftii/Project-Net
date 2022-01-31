@@ -52,7 +52,10 @@
                             </a>
                             <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
                             <p style="font-size:larger;  padding-top:20px ;padding-left:60px; ">
-                                @Html.ActionLink("Details", "Details", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })
+                                @Html.ActionLink("Details", "Details", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })  <br />                              
+                                @Html.ActionLink("Edit", "Edit", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })        <br />                       
+                                @Html.ActionLink("Delete", "Delete", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" })                             
+
                             </p>
 
                         </div>
