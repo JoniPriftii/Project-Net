@@ -57,10 +57,8 @@
 
         //Kujtes
 
-        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        if (this.User.IsInRole("Admin"))
         {
-
-
             <p>
                 @Html.ActionLink("Edit", "Edit", new { id = Model.ExercisePlanId }) |
 
@@ -73,7 +71,7 @@ else
     using (Html.BeginForm("AddUserExercisePlan", "ExercisePlans", new { id = Model.ExercisePlanId }, FormMethod.Post))
     {
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-bottom:50px;">
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
                     <h2>@Html.DisplayFor(model => model.ExercisePlanName)</h2>
@@ -83,7 +81,14 @@ else
 
             <div class="row">
                 <div class="col-lg-5">
-                    <img style="width:50%; margin:-10% auto 0;" src="~/Content/Images/ExercisePlan/@(Model.ImageName).jpg" alt="" class="img-responsive" />
+                    @if (Model.ImageName.Contains(".jpg"))
+                    {
+                        <img class="img-responsive" src="~/Content/Images/ExercisePlan/@(Model.ImageName)" alt="">
+                    }
+                    else
+                    {
+                        <img class="img-responsive" src="~/Content/Images/ExercisePlan/@(Model.ImageName).jpg" alt="">
+                    }
                 </div>
                 <div class="col-lg-5">
                     <div>
@@ -111,10 +116,8 @@ else
 
         //Kujtes
 
-        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        if (this.User.IsInRole("Admin"))
         {
-
-
             <p>
                 @Html.ActionLink("Edit", "Edit", new { id = Model.ExercisePlanId }) |
 
