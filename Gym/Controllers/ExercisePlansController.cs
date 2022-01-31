@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using Gym.Models;
 using System.Web.Helpers;
+using Gym.Models.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace Gym.Controllers
 {
@@ -54,6 +56,7 @@ namespace Gym.Controllers
             return View(await exerc.ToListAsync());
         }
 
+        /*
         // GET: ExercisePlans/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -68,6 +71,89 @@ namespace Gym.Controllers
             }
             return View(exercisePlan);
         }
+        */
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var exercisePlan = db.ExercisePlans.FirstOrDefault(i => i.ExercisePlanId == id);
+            var exercisePlanModel = new UserExercisePlanViewModel();
+            if (exercisePlan != null)
+            {
+                exercisePlanModel.ExercisePlanName = exercisePlan.ExercisePlanName;
+                exercisePlanModel.ExercisePlanId = exercisePlan.ExercisePlanId;                
+                exercisePlanModel.Description = exercisePlan.Description;
+                exercisePlanModel.ImageName = exercisePlan.ImageName;                
+                exercisePlanModel.DurationInDays = exercisePlan.DurationInDays;
+                exercisePlanModel.Price = exercisePlan.Price;
+                exercisePlanModel.Sessions = exercisePlan.Sessions;
+               
+                var userId = User.Identity.GetUserId();
+
+                var userExercisePlan = db.UserExercisePlans.FirstOrDefault(i => i.ExercisePlanId == id && i.IsActive == true && i.Id == userId);
+                if (userExercisePlan != null)
+                {
+                    exercisePlanModel.IsActive = true;
+                }
+                else
+                {
+                    exercisePlanModel.IsActive = false;
+                }
+            }
+
+            return View(exercisePlanModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult AddUserExercisePlan(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var exercisePlan = db.ExercisePlans.FirstOrDefault(i => i.ExercisePlanId == id);
+
+            if (exercisePlan != null)
+            {
+                var userExercisePlans = db.UserExercisePlans.Where(i => i.Id == userId && i.IsActive != false);
+                foreach (var userExercisePlan in userExercisePlans)
+                {
+                    userExercisePlan.IsActive = false;
+                    userExercisePlan.EndDate = DateTime.Now;
+                }
+                db.UserExercisePlans.Add(new UserExercisePlan { ExercisePlanId = id, Id = userId, StartDate = DateTime.Now, IsActive = true });
+                db.SaveChanges();
+                return RedirectToAction("UserInformation", "Account");
+            }
+            else
+            {
+                return View("Index", "ExercisePlans");
+            }
+
+
+        }
+
+        [HttpPost]
+        public ActionResult EndUserExercisePlan(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var exercisePlan = db.ExercisePlans.FirstOrDefault(i => i.ExercisePlanId == id);
+
+            if (exercisePlan != null)
+            {
+                var userExercisePlan = db.UserExercisePlans.FirstOrDefault(i => i.Id == userId && i.IsActive == true);
+
+                userExercisePlan.IsActive = false;
+                userExercisePlan.EndDate = DateTime.Now;
+
+                db.SaveChanges();
+
+                return RedirectToAction("UserInformation", "Account");
+            }
+            else
+            {
+                return View("Details", "ExercisePlans");
+            }
+        }
+
 
         // GET: ExercisePlans/Create
         public ActionResult Create()

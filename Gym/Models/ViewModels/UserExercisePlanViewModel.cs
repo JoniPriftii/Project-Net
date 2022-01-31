@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Gym.Models.ViewModels
 {
-    public class ExercisePlanViewModel
+    public class UserExercisePlanViewModel
     {
         public int ExercisePlanId { get; set; }
         
@@ -18,7 +18,8 @@ namespace Gym.Models.ViewModels
         public int Sessions { get; set; }
 
         public string ImageName { get; set; }
-        
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public bool IsActive { get; set; }
 
     }

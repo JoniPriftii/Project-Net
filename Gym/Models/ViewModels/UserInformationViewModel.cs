@@ -9,7 +9,7 @@ namespace Gym.Models.ViewModels
     {
         public ApplicationUser User { get; set; }
         public IList<UserDietPlanViewModel> UserDiets { get; set; }
-        public IList<ExercisePlanViewModel> UserExercises { get; set; }
+        public IList<UserExercisePlanViewModel> UserExercises { get; set; }
 
     }
 }

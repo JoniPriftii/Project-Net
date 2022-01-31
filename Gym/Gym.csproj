@@ -219,6 +219,7 @@
     <Compile Include="Models\ViewModels\UserDietPlanViewModel.cs" />
     <Compile Include="Models\ViewModels\DietPlanViewModel.cs" />
     <Compile Include="Models\ViewModels\ExercisePlanViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserExercisePlanViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Entities\ExercisePlan.cs" />
     <Compile Include="Models\Entities\Product.cs" />
