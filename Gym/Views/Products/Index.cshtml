@@ -75,14 +75,21 @@
                         <h3 style="color:darkslategray;  padding-top:20px">@item.Name</h3>
 
                         <a>
-                            <img class="img-responsive" src="../Content/Images/Product/@(item.ImageName).jpg" alt="trainer" height="500" width="500">
+                            @if (item.ImageName.Contains(".jpg"))
+                            {
+                                <img class="img-responsive" src="../Content/Images/Product/@(item.ImageName)" alt="" height="500" width="500">
+                            }
+                            else
+                            {
+                                <img class="img-responsive" src="../Content/Images/Product/@(item.ImageName).jpg" alt="" height="500" width="500">
+                            }
                         </a>
                         <div>
                             <h4 style="color:darkslategrey; padding-top:20px;"> Price: $@item.Price </h4>
 
                             @*
-        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-               {  }
+                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                       {  }
                             *@
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) </b></a>
 

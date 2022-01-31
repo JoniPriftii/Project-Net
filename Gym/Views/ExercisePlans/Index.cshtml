@@ -56,14 +56,21 @@
 
                 <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;" id="@(item.ExercisePlanId)item">
                     <div class="trainer">
-                        <a href="#"><img class="img-responsive" src="../Content/Images/ExercisePlan/@(item.ImageName).jpg" alt="trainer"></a>
+                        @if (item.ImageName.Contains(".jpg"))
+                        {
+                            <a href="#"><img class="img-responsive" src="../Content/Images/ExercisePlan/@(item.ImageName)" alt=""></a>
+                        }
+                        else
+                        {
+                            <a href="#"><img class="img-responsive" src="../Content/Images/ExercisePlan/@(item.ImageName).jpg" alt=""></a>
+                        }
                         <div class="title">
                             <h3>@Html.DisplayFor(modelItem => item.ExercisePlanName)</h3>
                             <a><b>@Html.DisplayFor(modelItem => item.Price)</b></a>
 
                             @*
-                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                {  }
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {  }
                             *@
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ExercisePlanId }) </b></a>
                             <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.ExercisePlanId"><b>  Delete </b></a>
