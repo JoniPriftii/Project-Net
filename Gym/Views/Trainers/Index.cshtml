@@ -33,7 +33,7 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;">
+                    <div class="col-md-4 col-sm-4 animate-box" style="margin-top:10px;" id="@(item.ExercisePlanId)item">
                         <div class="trainer">
                             <a href="#">
                                 <img class="img-responsive" src="../Content/Images/Trainer/@(item.ImageName).jpg" alt="trainer">
@@ -42,7 +42,7 @@
                                 <h3>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) </h3>
 
                                 <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.TrainerId }) </b></a>
-                                <a><b>   @Html.ActionLink("Delete", "Delete", new { id = item.TrainerId })</b></a>
+                                <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.ExercisePlanId"><b>  Delete </b></a>
                             </div>
                             <div class="desc text-center">
                                 <ul class="fh5co-social-icons">
