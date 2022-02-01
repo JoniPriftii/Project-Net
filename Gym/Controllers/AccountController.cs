@@ -240,7 +240,7 @@ namespace Gym.Controllers
         }
 
         //metodat e reja
-        [AllowAnonymous]
+        
         [HttpGet]
         public ActionResult RegisterRole()
         {
@@ -251,7 +251,7 @@ namespace Gym.Controllers
 
         //Post /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RegisterRole(RegisterViewModel model, ApplicationUser user)
         {
