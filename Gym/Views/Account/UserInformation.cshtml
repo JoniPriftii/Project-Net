@@ -20,76 +20,86 @@
         <div class="row" style="padding-left:80px;  padding-bottom:40px; padding-top:40px">
 
             <h2 style="padding-left:70px; padding-top:20px"> Your Exercise Plans</h2>
-            @foreach (var item in Model.UserExercises)
+            @if (Model.UserExercises.Any())
             {
-                <div class="col-md-4 col-sm-4 animate-box">
+                foreach (var item in Model.UserExercises)
+                {
+                    <div class="col-md-4 col-sm-4 animate-box">
 
-                    <div class="trainer" style=" padding-bottom:30px; padding-top:30px; padding-left:10px; padding-right:10px">
+                        <div class="trainer" style=" padding-bottom:30px; padding-top:30px; padding-left:10px; padding-right:10px">
 
-                        <h3 style="color:#F25B10; padding-left:70px; padding-top:20px">@item.ExercisePlanName</h3>
-                        <p style="padding-left:40px; ; padding-bottom:10px; padding-top:20px">
-                            <img class="img-responsive" src="~/Content/Images/ExercisePlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
+                            <h3 style="color:#F25B10; padding-left:70px; padding-top:20px">@item.ExercisePlanName</h3>
+                            <p style="padding-left:40px; ; padding-bottom:10px; padding-top:20px">
+                                <img class="img-responsive" src="~/Content/Images/ExercisePlan/@(item.ImageName).jpg" alt="trainer" , width="200" height="500">
 
-                        </p>
-
-                        <p style="font-size:medium;  padding-top:10px ;padding-left:10px; max-height:250px; overflow:scroll;">
-                            <b>@Html.DisplayNameFor(model => item.Description): </b>
-                            @item.Description
-                        </p>
-
-                        <p style="font-size:medium;  padding-left:50px; ">
-                            <b>@Html.DisplayNameFor(model => item.Sessions): </b>
-                            @item.Sessions
-                        </p>
-
-                        <p style="font-size:medium;  padding-left:50px; ">
-                            <b>@Html.DisplayNameFor(model => item.Price): </b>
-                            @item.Price
-                        </p>
-
-                        <p style="font-size:medium;   ;padding-left:50px; ">
-                            <b> @Html.DisplayNameFor(model => item.StartDate): </b>
-                            @item.StartDate
-                        </p>
-
-                        @if (@item.EndDate != null)
-                        {
-                            <p style="font-size:medium; padding-left:50px; ">
-                                <b> @Html.DisplayNameFor(model => item.EndDate): </b>
-                                @item.EndDate
                             </p>
-                        }
-                        else
-                        {
-                            <p style="font-size:medium; padding-left:50px; ">
-                                <b> @Html.DisplayNameFor(model => item.EndDate): </b>
-                                ...
-                            </p>
-                        }
 
-                        @if (item.IsActive == true)
-                        {
-                            <p style="font-size:medium; padding-left:50px; ">
-                                <b> @Html.DisplayNameFor(model => item.IsActive): </b>
-                                Active
+                            <p style="font-size:medium;  padding-top:10px ;padding-left:10px; max-height:250px; overflow:scroll;">
+                                <b>@Html.DisplayNameFor(model => item.Description): </b>
+                                @item.Description
                             </p>
-                        }
-                        else
-                        {
-                            <p style="font-size:medium;padding-left:50px; ">
-                                <b> @Html.DisplayNameFor(model => item.IsActive): </b>
-                                Inactive
+
+                            <p style="font-size:medium;  padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.Sessions): </b>
+                                @item.Sessions
                             </p>
-                        }
+
+                            <p style="font-size:medium;  padding-left:50px; ">
+                                <b>@Html.DisplayNameFor(model => item.Price): </b>
+                                @item.Price
+                            </p>
+
+                            <p style="font-size:medium;   ;padding-left:50px; ">
+                                <b> @Html.DisplayNameFor(model => item.StartDate): </b>
+                                @item.StartDate
+                            </p>
+
+                            @if (@item.EndDate != null)
+                            {
+                                <p style="font-size:medium; padding-left:50px; ">
+                                    <b> @Html.DisplayNameFor(model => item.EndDate): </b>
+                                    @item.EndDate
+                                </p>
+                            }
+                            else
+                            {
+                                <p style="font-size:medium; padding-left:50px; ">
+                                    <b> @Html.DisplayNameFor(model => item.EndDate): </b>
+                                    ...
+                                </p>
+                            }
+
+                            @if (item.IsActive == true)
+                            {
+                                <p style="font-size:medium; padding-left:50px; ">
+                                    <b> Status: </b>
+                                    Active
+                                </p>
+                            }
+                            else
+                            {
+                                <p style="font-size:medium;padding-left:50px; ">
+                                    <b> Status: </b>
+                                    Inactive
+                                </p>
+                            }
 
 
+                        </div>
+                        <br /><br /><br />
                     </div>
-                    <br /><br /><br />
-                </div>
+
+                }
 
             }
-
-
+            else
+            {
+                <div class="col-md-4 col-sm-4 animate-box">
+                    <div class="trainer" style=" padding-bottom:30px; padding-top:30px; padding-left:10px; padding-right:10px; margin-left: 60px;">
+                        <b>You don't have any Exercise Plans!</b>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -166,14 +176,14 @@
                         @if (item.IsActive == true)
                         {
                             <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
-                                <b>@Html.DisplayNameFor(model => item.IsActive): </b>
+                                <b>Status: </b>
                                 Active
                             </p>
                         }
                         else
                         {
                             <p style="font-size:medium;  padding-top:10px ;padding-left:50px; ">
-                                <b>@Html.DisplayNameFor(model => item.IsActive): </b>
+                                <b>Status: </b>
                                 Inactive
                             </p>
                         }

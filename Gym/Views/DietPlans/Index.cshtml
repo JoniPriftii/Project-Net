@@ -17,6 +17,11 @@
                 </div>
 
             </div>
+            @if(this.User.IsInRole("Admin"))
+            {
+        <b> @Html.ActionLink("Add New Diet Plan", "Create", new { @class = "btn btn-primary btn-outline btn-sm" })</b> <p><br /> <br/></p>
+
+            }
 
             <div class="row">
                 <div class="col-md-7 ">
@@ -40,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="row" >
+            <div class="row">
                 @foreach (var item in Model)
                 {
                     <div class="col-md-4 col-sm-4 animate-box" id="@(item.DietPlanId)item">
@@ -54,8 +59,8 @@
                                 }
                                 else
                                 {
-                                    <img class="img-responsive" src="../Content/Images/DietPlan/@(item.ImageName).jpg" alt=""  width="200" height="500"/>
-                                }                                
+                                    <img class="img-responsive" src="../Content/Images/DietPlan/@(item.ImageName).jpg" alt="" width="200" height="500" />
+                                }
                             </a>
                             <h2 style="font-size:larger;  padding-top:20px ;padding-left:60px; ">@item.Category</h2>
                             <p style="font-size:larger;  padding-top:20px ;padding-left:60px; ">
@@ -64,14 +69,14 @@
                                 {
                                     @Html.ActionLink("Edit", "Edit", new { id = item.DietPlanId }, new { @class = "btn btn-primary btn-outline btn-sm" }) <br />
 
-                                    <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.DietPlanId">  Delete </a>
+                                    <a stlye="margin-left:20px;" class="fshirje-btn btn btn-primary btn-outline btn-sm" id="@item.DietPlanId">  Delete </a>
                                 }
 
                             </p>
 
                         </div>
-                    <br /><br /><br />
-                </div>
+                        <br /><br /><br />
+                    </div>
 
                 }
             </div>

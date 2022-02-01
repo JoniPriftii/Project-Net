@@ -6,9 +6,11 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (this.User.IsInRole("Admin"))
+{
+    <b> @Html.ActionLink("Add New Product", "Create")</b> <p><br /> <br /></p>
+
+}
 
 @*===============================FILTRIM===================================*@
 <div class="row">

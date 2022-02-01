@@ -4,21 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@*
-    @{if (Request.IsAuthenticated && User.IsInRole("Admin"))
-    {   }
-*@
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-
-
-
-
-
-
-
 
 <div id="fh5co-trainer">
     <div class="container">
@@ -28,6 +13,11 @@
                 <p>All that you need to have your dream body. Watch ot for your best siut!</p>
             </div>
         </div>
+        @if (this.User.IsInRole("Admin"))
+        {
+            <b> @Html.ActionLink("Add New Exercise Plan", "Create")</b> <p><br /> <br /></p>
+
+        }
         <div class="row">
             <div class="col-md-7 ">
                 @Html.ActionLink("Less than 50$", "Index", "ExercisePlans", new { value = "low" }, new { @class = "btn btn-primary" })
@@ -64,17 +54,15 @@
                         {
                             <a href="#"><img class="img-responsive" src="../Content/Images/ExercisePlan/@(item.ImageName).jpg" alt=""></a>
                         }
-                        <div class="title">
-                            <h3>@Html.DisplayFor(modelItem => item.ExercisePlanName)</h3>
-                            <a><b>@Html.DisplayFor(modelItem => item.Price)</b></a>
+                    <div class="title">
+                        <h3>@Html.DisplayFor(modelItem => item.ExercisePlanName)</h3>
+                        <a><b>@Html.DisplayFor(modelItem => item.Price)</b></a>
 
-                            @*
-            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-            {  }
-                            *@
+                        @if (this.User.IsInRole("Admin"))
+                        {
                             <a><b>@Html.ActionLink("Edit", "Edit", new { id = item.ExercisePlanId }) </b></a>
                             <a stlye="margin-left:20px;" class="fshirje-btn" id="@item.ExercisePlanId"><b>  Delete </b></a>
-
+                        }
                         </div>
                         <div class="desc text-center">
                             <ul class="fh5co-social-icons">

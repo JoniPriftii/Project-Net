@@ -4,6 +4,7 @@
             var element = $(this);
             var del_id = element.attr("id");
             var info = "id=" + del_id;
+            console.log(info);
             $.ajax({
                 type: "POST",
                 url: "/Trainers/Fshi",

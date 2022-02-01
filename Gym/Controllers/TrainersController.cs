@@ -76,7 +76,8 @@ namespace Gym.Controllers
                     FirstName = trainer.FirstName,
                     LastName = trainer.LastName,
                     ExperienceDescription = trainer.ExperienceDescription,
-                    ImageName = ImageName.FileName
+                    ImageName = ImageName.FileName,
+                    ExercisePlanId = trainer.ExercisePlanId
                 });
                 db.SaveChanges();
                 return RedirectToAction("Index");
